@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Error Dock Chrome Extension",
+    "description": "chrome extension for error dock",
+    "version": "0.0.0.1",
+    "background": {
+      "scripts": [
+        "background.js"
+      ],
+      "persistent": true
+    },
+    "permissions": [
+      "tabs"
+    ],
+    "browser_action": {
+      "default_title": "errordock",
+      "default_popup": "popup.html"
+    }
+  }

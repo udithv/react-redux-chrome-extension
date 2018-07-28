@@ -1,11 +1,8 @@
 
-const initialState = 'Hi!!!';
-
-
-export default (state = initialState, action) => {
+export default (state = 'hi', action) => {
   switch (action.type) {
     case 'FETCH_USER':
-      return action.payload;
+      return action.payload || false;
     default:
       return state;
   }

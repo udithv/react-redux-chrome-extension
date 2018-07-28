@@ -10,10 +10,18 @@
       "persistent": true
     },
     "permissions": [
+      "http://localhost:5000/api/current_user",
       "tabs"
     ],
     "browser_action": {
       "default_title": "errordock",
       "default_popup": "popup.html"
-    }
+    },
+    "content_scripts": [
+      {
+        "matches": ["http://localhost:5000/login_success"],
+        "css": [],
+        "js": ["content.js"]
+      }
+    ]
   }

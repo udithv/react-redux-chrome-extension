@@ -7,6 +7,7 @@ const plugins = loadPlugins();
 
 import popupWebpackConfig from './popup/webpack.config';
 import backgroundWebpackConfig from './background/webpack.config';
+import contentWebpackConfig from './content/webpack.config';
 
 gulp.task('popup-js', ['clean'], (cb) => {
   webpack(popupWebpackConfig, (err, stats) => {
@@ -29,7 +30,15 @@ gulp.task('background-js', ['clean'], (cb) => {
 });
 
 
+gulp.task('content-js', ['clean'], (cb) => {
+  webpack(contentWebpackConfig, (err, stats) => {
+    if(err) throw new plugins.util.PluginError('webpack', err);
 
+    plugins.util.log('[webpack]', stats.toString());
+
+    cb();
+  });
+});
 
 
 gulp.task('popup-html', ['clean'], () => {
@@ -47,7 +56,7 @@ gulp.task('clean', (cb) => {
   rimraf('./build', cb);
 });
 
-gulp.task('build', ['copy-manifest', 'popup-js', 'popup-html', 'background-js']);
+gulp.task('build', ['copy-manifest', 'popup-js', 'popup-html', 'background-js', 'content-js']);
 
 gulp.task('watch', ['default'], () => {
   gulp.watch('popup/**/*', ['build']);

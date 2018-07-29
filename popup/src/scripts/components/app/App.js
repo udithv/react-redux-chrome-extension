@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { fetchUser } from '../../actions';
 import { Store } from 'react-chrome-redux';
+import axios from 'axios';
 
 const proxyStore = new Store({
   portName: 'errordock'
@@ -13,8 +14,9 @@ class App extends Component {
   }
 
   componentDidMount() {
-    console.log("mounted")
-    this.props.fetchUser();
+    axios.get('http://localhost:5000/api/current_user')
+        .then(res => this.props.fetchUser(res.data));
+    
   }
 
   handleOnClick(message) {
@@ -49,6 +51,7 @@ class App extends Component {
   return (
             <div>
               <h1>Welcome!!!!</h1>
+              {this.props.auth.googleId}
               <button 
                 onClick={this.handleOnClick.bind(this, 'logout')}
               >
@@ -59,9 +62,9 @@ class App extends Component {
   }
 
   render() {
+  
     return (
       <div>
-        {this.props.auth}
         { this.props.auth ? this.renderHomePage() : this.renderLoginButton()  }
       </div>
     );

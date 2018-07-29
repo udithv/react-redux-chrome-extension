@@ -12781,12 +12781,12 @@ var _constants = __webpack_require__(137);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var fetchUser = /* async  */exports.fetchUser = function fetchUser() {
+var fetchUser = exports.fetchUser = function fetchUser(message) {
     console.log("action");
-    //const res = await axios.get("http://localhost:5000/api/current_user");
+
     return {
         type: _constants.FETCH_USER,
-        payload: "Hello"
+        payload: message
     };
 };
 

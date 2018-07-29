@@ -9,12 +9,12 @@ import { FETCH_USER } from '../constants';
     });
 }
  */
-export const fetchUser = () => async dispatch => {
+export const fetchUser = (message)  => {
     /* const res = await axios.get("http://localhost:5000/api/current_user");
 
     dispatch({ type: FETCH_USER, payload: res.data}); */
     return {
         type: FETCH_USER,
-        payload: 'Hello World!!'
+        payload: message
     }
 };

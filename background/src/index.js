@@ -3,23 +3,7 @@ import rootReducer from './reducers';
 
 import {alias, wrapStore} from 'react-chrome-redux';
 
-const aliases = {
-  'openLoginPage': () => {
-    chrome.tabs.create({ url: 'https://www.google.com' });
-  },
-  'getTabInfo': (action) => {
-    console.log(action);
-    chrome.tabs.query({active: true}, (result) => {
-      console.log(result);
-      return {
-        type: 'TEST_ACTION',
-        payload: result
-      }
-      
-    });
-    
-  }
-};
+import aliases from './aliases';
 
 
 const store = createStore(

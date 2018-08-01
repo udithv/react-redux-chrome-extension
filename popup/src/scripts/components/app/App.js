@@ -26,7 +26,7 @@ class App extends Component {
       case 'login': window.open("http://localhost:5000/auth/google");
       case 'logout': window.open("http://localhost:5000/api/logout");
       case 'current_user': window.open("http://localhost:5000/api/current_user");
-      case 'add bookmark': proxyStore.dispatch({ type: 'getTabInfo'});
+      case 'add bookmark': proxyStore.dispatch({ type: 'GET_TAB_INFO'});
     }
     
   }

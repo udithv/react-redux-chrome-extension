@@ -12885,7 +12885,7 @@ var App = function (_Component) {
         case 'current_user':
           window.open("http://localhost:5000/api/current_user");
         case 'add bookmark':
-          proxyStore.dispatch({ type: 'getTabInfo' });
+          proxyStore.dispatch({ type: 'GET_TAB_INFO' });
       }
     }
   }, {

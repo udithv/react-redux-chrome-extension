@@ -12934,7 +12934,7 @@ var App = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-
+      console.log(this.props.test);
       return _react2.default.createElement(
         'div',
         null,
@@ -12946,9 +12946,13 @@ var App = function (_Component) {
   return App;
 }(_react.Component);
 
-var mapStateToProps = function mapStateToProps(state) {
+var mapStateToProps = function mapStateToProps(_ref) {
+  var auth = _ref.auth,
+      test = _ref.test;
+
   return {
-    auth: state.auth
+    auth: auth,
+    test: test
   };
 };
 

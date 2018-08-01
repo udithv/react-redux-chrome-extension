@@ -11,8 +11,13 @@ const aliases = {
     console.log(action);
     chrome.tabs.query({active: true}, (result) => {
       console.log(result);
+      return {
+        type: 'TEST_ACTION',
+        payload: result
+      }
       
     });
+    
   }
 };
 

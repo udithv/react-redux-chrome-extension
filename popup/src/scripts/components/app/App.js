@@ -63,7 +63,7 @@ class App extends Component {
   }
 
   render() {
-  
+    console.log(this.props.test);
     return (
       <div>
         { this.props.auth ? this.renderHomePage() : this.renderLoginButton()  }
@@ -72,9 +72,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({auth, test}) => {
   return {
-    auth: state.auth
+    auth,
+    test
   };
 };
 

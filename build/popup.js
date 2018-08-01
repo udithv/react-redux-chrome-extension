@@ -12808,20 +12808,10 @@ var _constants = __webpack_require__(138);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-/* export const fetchUser = async dispatch => {
-    const res = await axios.get("http://localhost:5000/api/current_user");
-    dispatch({ 
-        type: FETCH_USER, 
-        payload: res.data
-    });
-}
- */
-var fetchUser = exports.fetchUser = function fetchUser(message) {
-    /* const res = await axios.get("http://localhost:5000/api/current_user");
-     dispatch({ type: FETCH_USER, payload: res.data}); */
+var fetchUser = exports.fetchUser = function fetchUser(user) {
     return {
         type: _constants.FETCH_USER,
-        payload: message
+        payload: user
     };
 };
 
@@ -12894,6 +12884,8 @@ var App = function (_Component) {
           window.open("http://localhost:5000/api/logout");
         case 'current_user':
           window.open("http://localhost:5000/api/current_user");
+        case 'add bookmark':
+          proxyStore.dispatch({ type: 'getTabInfo' });
       }
     }
   }, {
@@ -12908,13 +12900,6 @@ var App = function (_Component) {
             onClick: this.handleOnClick.bind(this, 'login')
           },
           'Login'
-        ),
-        _react2.default.createElement(
-          'button',
-          {
-            onClick: this.handleOnClick.bind(this, 'current_user')
-          },
-          'current_user'
         )
       );
     }
@@ -12936,6 +12921,13 @@ var App = function (_Component) {
             onClick: this.handleOnClick.bind(this, 'logout')
           },
           'logout'
+        ),
+        _react2.default.createElement(
+          'button',
+          {
+            onClick: this.handleOnClick.bind(this, 'add bookmark')
+          },
+          '+'
         )
       );
     }

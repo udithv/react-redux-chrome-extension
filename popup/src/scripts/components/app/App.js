@@ -26,6 +26,7 @@ class App extends Component {
       case 'login': window.open("http://localhost:5000/auth/google");
       case 'logout': window.open("http://localhost:5000/api/logout");
       case 'current_user': window.open("http://localhost:5000/api/current_user");
+      case 'add bookmark': proxyStore.dispatch({ type: 'getTabInfo'});
     }
     
   }
@@ -37,11 +38,6 @@ class App extends Component {
                   onClick={this.handleOnClick.bind(this, 'login')}
                 >
                   Login
-                </button>
-                <button 
-                  onClick={this.handleOnClick.bind(this, 'current_user')}
-                >
-                  current_user
                 </button>
               </div>
             )
@@ -56,6 +52,11 @@ class App extends Component {
                 onClick={this.handleOnClick.bind(this, 'logout')}
               >
                 logout
+              </button>
+              <button 
+                onClick={this.handleOnClick.bind(this, 'add bookmark')}
+              >
+                +
               </button>
             </div>
          );

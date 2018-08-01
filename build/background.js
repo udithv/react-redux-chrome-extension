@@ -1220,12 +1220,15 @@ var _reactChromeRedux = __webpack_require__(71);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//import reduxThunk from 'redux-thunk';
-
-
 var aliases = {
   'openLoginPage': function openLoginPage() {
     chrome.tabs.create({ url: 'https://www.google.com' });
+  },
+  'getTabInfo': function getTabInfo(action) {
+    console.log(action);
+    chrome.tabs.query({ active: true }, function (result) {
+      console.log(result);
+    });
   }
 };
 

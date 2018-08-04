@@ -1,12 +1,14 @@
 import { delay } from "redux-saga";
 import { put, takeEvery, all } from 'redux-saga/effects'
+import { getTabInfo } from './interface';
 
 export function* helloSaga() {
     console.log("hello Saga");
 }
 
 export function* sayHi() {
-    yield delay(100);
+    const data = yield getTabInfo();
+    console.log(data);
     console.log("hi u lucky bastard")
     yield put({ type: 'SAID_HI', payload: 'HI'});
 }

@@ -12900,6 +12900,15 @@ var App = function (_Component) {
             onClick: this.handleOnClick.bind(this, 'login')
           },
           'Login'
+        ),
+        _react2.default.createElement(
+          'button',
+          {
+            onClick: function onClick() {
+              return proxyStore.dispatch({ type: 'SAY_HI' });
+            }
+          },
+          'say hi'
         )
       );
     }

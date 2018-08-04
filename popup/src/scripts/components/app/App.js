@@ -39,6 +39,11 @@ class App extends Component {
                 >
                   Login
                 </button>
+                <button 
+                  onClick={() => proxyStore.dispatch({ type:'SAY_HI'})}
+                >
+                  say hi
+                </button>
               </div>
             )
             }

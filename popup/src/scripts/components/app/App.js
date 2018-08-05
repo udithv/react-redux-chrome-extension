@@ -9,9 +9,7 @@ import Login from '../login/Login';
 import ErrorDock from '../errordock/ErrorDock';
 
 
-const proxyStore = new Store({
-  portName: 'errordock'
-});
+
 
 class App extends Component {
   constructor(props) {

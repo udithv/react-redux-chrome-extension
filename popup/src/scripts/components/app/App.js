@@ -40,7 +40,7 @@ class App extends Component {
                   Login
                 </button>
                 <button 
-                  onClick={() => proxyStore.dispatch({ type:'SAY_HI'})}
+                  onClick={() => proxyStore.dispatch({ type:'DOCK_IT'})}
                 >
                   say hi
                 </button>
@@ -58,17 +58,14 @@ class App extends Component {
               >
                 logout
               </button>
-              <button 
-                onClick={this.handleOnClick.bind(this, 'add bookmark')}
-              >
-                +
-              </button>
             </div>
          );
   }
 
   render() {
-    console.log(this.props.test);
+    /* console.log(this.props.test); */
+    console.log('webpage added ');
+    console.log(this.props.webpages);
     return (
       <div>
         { this.props.auth ? this.renderHomePage() : this.renderLoginButton()  }
@@ -77,9 +74,10 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({auth, test}) => {
+const mapStateToProps = ({auth, webpages, test}) => {
   return {
     auth,
+    webpages,
     test
   };
 };

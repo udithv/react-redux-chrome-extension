@@ -4,6 +4,11 @@ import { fetchUser } from '../../actions';
 import { Store } from 'react-chrome-redux';
 import axios from 'axios';
 
+//Components
+import Login from '../login/Login';
+import ErrorDock from '../errordock/ErrorDock';
+
+
 const proxyStore = new Store({
   portName: 'errordock'
 });
@@ -13,72 +18,24 @@ class App extends Component {
     super(props);
   }
 
-  componentDidMount() {
+  componentWillMount() {
     axios.get('http://localhost:5000/api/current_user')
         .then(res => this.props.fetchUser(res.data));
     
   }
 
-  handleOnClick(message) {
-    /* proxyStore.dispatch({ type: 'openLoginPage' }); */
-    //this.props.fetchUser(message);
-    switch(message){
-      case 'login': window.open("http://localhost:5000/auth/google");
-      case 'logout': window.open("http://localhost:5000/api/logout");
-      case 'current_user': window.open("http://localhost:5000/api/current_user");
-      case 'add bookmark': proxyStore.dispatch({ type: 'GET_TAB_INFO'});
-    }
-    
-  }
-
-  renderLoginButton() {
-    return(   
-              <div>
-                <button 
-                  onClick={this.handleOnClick.bind(this, 'login')}
-                >
-                  Login
-                </button>
-                <button 
-                  onClick={() => proxyStore.dispatch({ type:'DOCK_IT'})}
-                >
-                  say hi
-                </button>
-              </div>
-            )
-            }
-
-  renderHomePage() {
-  return (
-            <div>
-              <h1>Welcome!!!!</h1>
-              {this.props.auth.googleId}
-              <button 
-                onClick={this.handleOnClick.bind(this, 'logout')}
-              >
-                logout
-              </button>
-            </div>
-         );
-  }
-
   render() {
-    /* console.log(this.props.test); */
-    console.log('webpage added ');
-    console.log(this.props.webpages);
     return (
       <div>
-        { this.props.auth ? this.renderHomePage() : this.renderLoginButton()  }
+        { this.props.auth ? <ErrorDock /> : <Login/>  }
       </div>
     );
   }
 }
 
-const mapStateToProps = ({auth, webpages, test}) => {
+const mapStateToProps = ({auth}) => {
   return {
-    auth,
-    webpages,
-    test
+    auth
   };
 };
 

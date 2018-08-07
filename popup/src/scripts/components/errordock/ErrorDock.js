@@ -17,7 +17,7 @@ class ErrorDock extends Component {
   render() {
   return (
             <div>
-              <h1>Welcome!!!!</h1>
+              <h1>Welcome !</h1>
               <WebPageList />
               <button 
                 onClick={() => window.open("http://localhost:5000/api/logout")}

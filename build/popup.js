@@ -12955,7 +12955,7 @@ var ErrorDock = function (_Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'Welcome!!!!'
+          'Welcome !'
         ),
         _react2.default.createElement(_WebPageList2.default, null),
         _react2.default.createElement(

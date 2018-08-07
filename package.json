@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "description": "chrome extension for errordock app",
   "main": "index.js",
+  "nodemonConfig": {
+    "ignore": ["build/*"]
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "./node_modules/.bin/gulp"
+    "compile:app": "./node_modules/.bin/gulp",
+    "start": "nodemon --exec './node_modules/.bin/gulp'"
   },
   "author": "Udith Victor",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.18.0",
+    "nodemon": "^1.18.3",
     "react": "^15.5.0",
     "react-chrome-redux": "^1.5.0",
     "react-dom": "^15.5.0",

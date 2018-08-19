@@ -13,6 +13,11 @@ class ErrorDock extends Component {
   constructor(props) {
     super(props);
   }
+  
+  componentDidMount() {
+    axios.post('/api/docks', { projectName: 'Project 1 '})
+        .then(res => console.log(res));
+  }
 
   render() {
   return (

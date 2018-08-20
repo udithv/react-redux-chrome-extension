@@ -28,7 +28,7 @@ class ErrorDock extends Component {
     if(this.state.page === 'form') {
       return <WebPageForm changePage={this.handleChangePage.bind(this)} />
     } else if(this.state.page === 'docks') {
-      return <Dock />;
+      return <Dock changePage={this.handleChangePage.bind(this)} />;
     }
   }
 

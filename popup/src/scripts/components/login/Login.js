@@ -17,7 +17,7 @@ class Login extends Component {
     return (
         <div className="login">
             <div className="login__logo-box">
-                <img className="login__logo" src="img/wheel.svg" alt="svg image" />
+                <img className="login__logo" src="img/Logo.svg" alt="svg image" />
             </div>
             <div className="u-margin-bottom-small">
                 <a 

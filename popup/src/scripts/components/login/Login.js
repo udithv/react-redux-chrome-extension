@@ -49,7 +49,7 @@ class Login extends Component {
 
   render() {
     return(
-      <div className="chrome-ext__body">
+      <div>
           <header className="chrome-ext__header u-margin-top-small">
             ErrorDock
           </header>

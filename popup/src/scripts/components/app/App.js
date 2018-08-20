@@ -24,7 +24,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div  className="chrome-ext__body">
         { this.props.auth ? <ErrorDock /> : <Login/>  }
       </div>
     );

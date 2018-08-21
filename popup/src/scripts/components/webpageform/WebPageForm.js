@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class WebPageForm extends Component {
     render() {
+        const { url, title } = this.props.webpage;
         return(
             <div className="dock__form">
                 <form  className="form">
@@ -10,7 +11,7 @@ class WebPageForm extends Component {
                             type="text"
                             className="form__input" 
                             placeholder="Title" 
-                            value="ErrorDock" 
+                            value={title} 
                         />
                         <label  className="form__label">Title</label>
                     </div>
@@ -19,7 +20,7 @@ class WebPageForm extends Component {
                             type="text"
                             className="form__input" 
                             placeholder="URL"  
-                            value="https://www.errordock.com"
+                            value={url}
                             disabled 
                         />
                         <label  className="form__label">Url</label>

@@ -22,7 +22,7 @@ class Dock extends Component {
         return (
             <div className="dock__dashboard">
                 <DockCreate />
-                <DockList /> 
+                <DockList changePge={this.props.changePage} /> 
                 {this.renderGoBack()}
             </div>
         );  

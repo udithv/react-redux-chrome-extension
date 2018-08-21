@@ -7,17 +7,27 @@ import Header from '../header/Header';
 import WebPageForm from '../webpageform/WebPageForm';
 import Dock from '../dock/Dock';
 
+const CHROME_URL_REGEX = /^(chrome:\/\/)((\w|\d)+\/*)*/;
+
 const proxyStore = new Store({
   portName: 'errordock'
 });
+
+const isChromeURL = (url) => {
+    return CHROME_URL_REGEX.test(url);
+}
 
 class ErrorDock extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-        page: 'form' // form, settings, docks
+        page: 'form' // form, docks
     }
+  }
+
+  componentWillMount() {
+    proxyStore.dispatch({type: 'DOCK_IT'});
   }
 
   handleChangePage(page) {
@@ -25,11 +35,19 @@ class ErrorDock extends Component {
   }
 
   pageContent() {
-    if(this.state.page === 'form') {
-      return <WebPageForm changePage={this.handleChangePage.bind(this)} />
-    } else if(this.state.page === 'docks') {
-      return <Dock changePage={this.handleChangePage.bind(this)} />;
+    if(isChromeURL(this.props.webpage.url)){
+      return <p>Settings</p>;
+    }else {
+      if(this.state.page === 'form') {
+        return <WebPageForm 
+                  changePage={this.handleChangePage.bind(this)} 
+                  webpage={this.props.webpage}
+                />
+      } else if(this.state.page === 'docks') {
+        return <Dock changePage={this.handleChangePage.bind(this)} />;
+      }
     }
+    
   }
 
   renderContent(){
@@ -43,6 +61,7 @@ class ErrorDock extends Component {
 
   render() {
       console.log(this.state.page);
+      console.log(isChromeURL(this.props.webpage.url));
     return (
       <div>
         {this.renderContent()}
@@ -53,5 +72,12 @@ class ErrorDock extends Component {
 }
 
 
+function mapStateToProps({ webpage }) {
+  return {
+    webpage
+  }
+}
 
-export default ErrorDock;
+
+
+export default connect(mapStateToProps)(ErrorDock);

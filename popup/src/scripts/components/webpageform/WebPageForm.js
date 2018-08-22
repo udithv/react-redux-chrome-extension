@@ -6,10 +6,12 @@ class WebPageForm extends Component {
         this.state = {
             title: props.webpage.title,
             url: props.webpage.url,
-            description: ''
+            description: '',
+            submitted: false
         }
     }
 
+    //hack for intializing state with props
     componentWillReceiveProps(nextProps){
         if (nextProps.webpage.url !== this.props.webpage.url) {
           this.setState({ title: nextProps.webpage.title, url: nextProps.webpage.url })
@@ -18,7 +20,23 @@ class WebPageForm extends Component {
     
     handleSubmit(event) {
         event.preventDefault();
+        this.setState({ submitted: true });
         console.log(this.state);
+    }
+
+    renderSubmitButton() {
+        return (
+            <button className="btn-submit">
+                <img 
+                    className="btn-submit__icon" 
+                    src="img/big-anchor.svg" 
+                    alt="dockit"
+                />
+                <span className="btn-submit__text">
+                    Dock it
+                </span>
+            </button>
+        );
     }
 
 
@@ -35,6 +53,7 @@ class WebPageForm extends Component {
                             placeholder="Title" 
                             value={this.state.title}
                             onInput={event => this.setState({ title: event.target.value })}
+                            disabled={this.state.submitted}
                         />
                         <label  className="form__label">Title</label>
                     </div>
@@ -69,20 +88,13 @@ class WebPageForm extends Component {
                             className="form__input" 
                             placeholder="Description" 
                             onInput={event => this.setState({ description: event.target.value })}
-                            value={this.state.description} />
+                            value={this.state.description}
+                            disabled={this.state.submitted}
+                        />
                         <label for="description" className="form__label">Description</label>
                     </div>
                     <div className="form__group">
-                        <button className="btn-submit">
-                            <img 
-                                className="btn-submit__icon" 
-                                src="img/big-anchor.svg" 
-                                alt="dockit"
-                            />
-                            <span className="btn-submit__text">
-                                Dock it
-                            </span>
-                        </button>
+                        {this.state.submitted ? 'loader' : this.renderSubmitButton() }
                     </div>
                 </form>
             </div>

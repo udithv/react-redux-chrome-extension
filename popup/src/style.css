@@ -634,6 +634,20 @@ body {
     width: 100%;
     height: 20rem; }
 
+.dock__view {
+  margin-top: 1.4rem; }
+
+.dock__heading {
+  font-size: 2.4rem;
+  font-weight: 500;
+  max-height: 10rem;
+  color: #000;
+  margin: 1.2rem 2.8rem;
+  overflow: hidden;
+  text-decoration: underline #006df0; }
+  .dock__heading h4 {
+    text-overflow: ellipsis; }
+
 .dock__header {
   height: 5rem;
   box-shadow: 0 0 10px grey; }
@@ -679,14 +693,19 @@ body {
     margin-left: .5rem;
     margin-right: .5rem;
     width: 3rem;
-    height: 3rem; }
+    height: 3rem;
+    transition: all .2s; }
+    .dock__list-icon:hover {
+      transform: translateY(-2px) scale(1.1); }
+    .dock__list-icon:active, .dock__list-icon:focus {
+      transform: translateY(0) scale(1); }
 
 .dock__card {
   padding: 1rem 2rem;
   margin-bottom: 2rem;
   color: #000;
   width: 90%;
-  height: 6rem;
+  min-height: 6rem;
   box-shadow: 2px 2px 5px skyblue;
   transition: all .2s; }
   .dock__card:hover {
@@ -698,6 +717,25 @@ body {
   .dock__card p {
     margin-top: .5rem;
     margin-left: 1rem;
-    max-width: 15rem;
+    max-width: 19rem;
     overflow: hidden;
-    border-bottom: 2px solid #006df0; }
+    text-overflow: ellipsis;
+    cursor: pointer; }
+  .dock__card-webpage {
+    position: relative;
+    height: 50rem; }
+
+.dock__success {
+  text-align: center;
+  height: 100%;
+  margin-top: 5rem; }
+  .dock__success-box {
+    margin-bottom: 2rem; }
+  .dock__success-logo {
+    width: 100%;
+    height: 25rem;
+    animation: comeTowards 1s linear; }
+  .dock__success-message {
+    color: #006df0;
+    font-size: 4rem;
+    animation: moveInBottom 5s ease-out .3s; }

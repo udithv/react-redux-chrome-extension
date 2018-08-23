@@ -5,7 +5,7 @@ class DockCard extends Component {
         return (
             <div className="dock__card">
                 <img src="img/sea-ship-with-containers.svg" alt="" className="dock__list-icon left" />
-                <p className="left">{this.props.title}</p>
+                <p className="left">{this.props.projectName}</p>
                 <img src="img/life-saver.svg" alt="" className="dock__list-icon right" />
             </div>
         );

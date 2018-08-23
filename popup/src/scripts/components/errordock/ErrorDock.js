@@ -61,7 +61,6 @@ class ErrorDock extends Component {
 
   render() {
       console.log(this.state.page);
-      console.log(isChromeURL(this.props.webpage.url));
     return (
       <div>
         {this.renderContent()}

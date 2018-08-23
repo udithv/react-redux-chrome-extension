@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 import DockCreate from './DockCreate';
 import DockList from './DockList';
 
+import { fetchDocks } from '../../actions';
+
 class Dock extends Component {
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/api/docks')
+            .then(res => this.props.fetchDocks(res.data.docks));
+    }
+
     renderGoBack() {
         return (
             <div className="footer">
@@ -19,10 +29,11 @@ class Dock extends Component {
         );
     }
     render() {
+        console.log(this.props.docks);
         return (
             <div className="dock__dashboard">
                 <DockCreate />
-                <DockList changePge={this.props.changePage} /> 
+                <DockList /> 
                 {this.renderGoBack()}
             </div>
         );  
@@ -30,4 +41,6 @@ class Dock extends Component {
     
 }
 
-export default Dock;
+
+
+export default connect(null, { fetchDocks })(Dock);

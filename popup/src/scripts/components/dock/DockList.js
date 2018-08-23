@@ -1,27 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from  'react-redux';
 
 import DockCard from './DockCard';
 
+
 class DockList extends Component {
     render() {
+        console.log(this.props.docks);
         return (
             <div className="dock__list">
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
-                <DockCard title="Dock1" />
+                {
+                    this.props.docks.map(({ projectName, _id }) => {
+                        return <DockCard
+                                     key={_id}
+                                     projectName={projectName}
+                                     id={_id}
+                                />;
+                    })
+                }
+                
             </div>
         );
     }
 }
 
-export default DockList;
+function mapStateToProps({ docks }) {
+    return {
+        docks
+    }
+}
+
+export default connect(mapStateToProps)(DockList);

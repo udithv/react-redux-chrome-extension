@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class WebPageForm extends Component {
     constructor(props) {
@@ -20,7 +21,6 @@ class WebPageForm extends Component {
     
     handleSubmit(event) {
         event.preventDefault();
-        this.setState({ submitted: true });
         console.log(this.state);
     }
 
@@ -42,7 +42,6 @@ class WebPageForm extends Component {
 
     render() {
         const { url, title } = this.props.webpage;
-
         return(
             <div className="dock__form">
                 <form  className="form" onSubmit={this.handleSubmit.bind(this)} >
@@ -79,7 +78,7 @@ class WebPageForm extends Component {
                             />
                         </a> 
                         <span className="dock__name">
-                            project-sea-serpent
+                            {this.props.current_dock.projectName}
                         </span>
                     </div>
                     <div className="form__group">
@@ -91,7 +90,7 @@ class WebPageForm extends Component {
                             value={this.state.description}
                             disabled={this.state.submitted}
                         />
-                        <label for="description" className="form__label">Description</label>
+                        <label className="form__label">Description</label>
                     </div>
                     <div className="form__group">
                         {this.state.submitted ? 'loader' : this.renderSubmitButton() }
@@ -102,4 +101,10 @@ class WebPageForm extends Component {
     }
 }
 
-export default WebPageForm;
+function mapStateToProps({ current_dock }) {
+    return {
+        current_dock
+    }
+}
+
+export default connect(mapStateToProps)(WebPageForm);

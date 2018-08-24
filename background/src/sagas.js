@@ -56,7 +56,6 @@ export function* fetchDocks() {
 }
 
 export function* addDock(action) {
-    console.log(action);
     const dockConfig = {
         method: 'post',
         url: `${ROOT_URL}/api/docks`,
@@ -65,6 +64,23 @@ export function* addDock(action) {
     const res = yield call(request, dockConfig);
 
     yield put({ type: 'FETCH_DOCKS' });
+}
+
+export function* setCurrentDock(action) {
+
+    const dockConfig = {
+        method: 'post',
+        url: `${ROOT_URL}/api/docks/current_dock`,
+        data: {
+            dockid: action.payload
+        }
+    }
+    const res = yield call(request, dockConfig);
+
+    yield put({ type: 'UPDATE_CURRENT_DOCK', payload: res.data.current_dock });
+
+    yield put({ type: 'FETCH_DOCKS' });
+    
 }
 
 /* 
@@ -91,6 +107,10 @@ export function* watchAddDock() {
     yield takeEvery('ADD_DOCK', addDock);
 }
 
+export function* watchSetCurrentDock() {
+    yield takeEvery('SET_CURRENT_DOCK', setCurrentDock);
+}
+
 
 /* 
     Root Saga
@@ -103,6 +123,7 @@ export default function* rootSaga() {
       watchFetchUser(), 
       watchFetchWebPage(),
       watchFetchDocks(),
-      watchAddDock()
+      watchAddDock(),
+      watchSetCurrentDock()
     ])
   }

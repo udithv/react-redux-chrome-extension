@@ -6,7 +6,6 @@ import DockCard from './DockCard';
 
 class DockList extends Component {
     render() {
-        console.log(this.props.docks);
         return (
             <div className="dock__list">
                 {

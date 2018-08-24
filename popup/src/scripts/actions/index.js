@@ -34,6 +34,13 @@ export const addDock = (dockProps) => {
     }
 }
 
+export const setCurrentDock = (dockid) => {
+    return {
+        type: 'SET_CURRENT_DOCK',
+        payload: dockid
+    }
+}
+
 export const logout = () => {
     return {
         type: 'LOGOUT'

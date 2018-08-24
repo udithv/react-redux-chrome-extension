@@ -16,7 +16,7 @@ const docksReducer = (state = [], action) => {
         case 'ADD_DOCKS':
             return action.payload;
         case 'LOGOUT':
-            return null;
+            return [];
         default:
             return state;
     }

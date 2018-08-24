@@ -10,8 +10,6 @@ import { fetchDocks } from '../../actions';
 class Dock extends Component {
 
     componentDidMount() {
-        /* axios.get('http://localhost:5000/api/docks')
-            .then(res => this.props.fetchDocks(res.data.docks)); */
         this.props.fetchDocks();
     }
 
@@ -30,7 +28,6 @@ class Dock extends Component {
         );
     }
     render() {
-        console.log(this.props.docks);
         return (
             <div className="dock__dashboard">
                 <DockCreate />

@@ -2,6 +2,8 @@ import { put, takeEvery, all, call } from 'redux-saga/effects'
 import { getTabInfo } from './interface';
 import request from 'axios';
 
+const ROOT_URL = 'http://localhost:5000';
+
 /* 
     Worker Sagas
  */
@@ -22,7 +24,7 @@ export function* sayHi() {
 export function* fetchUser() {
     const userConfig = {
         method: 'get',
-        url: 'http://localhost:5000/api/current_user',
+        url: `${ROOT_URL}/api/current_user`,
     }
     const user = yield call(request, userConfig);
 
@@ -44,14 +46,25 @@ export function* fetchWebPage() {
 export function* fetchDocks() {
     const dockConfig = {
         method: 'get',
-        url: 'http://localhost:5000/api/docks'
+        url: `${ROOT_URL}/api/docks`
     }
 
     const res = yield call(request, dockConfig);
-    console.log(res.data);
 
     yield put({ type: 'ADD_DOCKS', payload: res.data.docks });
 
+}
+
+export function* addDock(action) {
+    console.log(action);
+    const dockConfig = {
+        method: 'post',
+        url: `${ROOT_URL}/api/docks`,
+        data: action.payload
+    }
+    const res = yield call(request, dockConfig);
+
+    yield put({ type: 'FETCH_DOCKS' });
 }
 
 /* 
@@ -74,6 +87,10 @@ export function* watchFetchDocks() {
     yield takeEvery('FETCH_DOCKS', fetchDocks);
 }
 
+export function* watchAddDock() {
+    yield takeEvery('ADD_DOCK', addDock);
+}
+
 
 /* 
     Root Saga
@@ -85,6 +102,7 @@ export default function* rootSaga() {
       watchSayHi(),
       watchFetchUser(), 
       watchFetchWebPage(),
-      watchFetchDocks()
+      watchFetchDocks(),
+      watchAddDock()
     ])
   }

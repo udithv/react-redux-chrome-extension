@@ -27,6 +27,13 @@ export const fetchDocks = () => {
     }
 };
 
+export const addDock = (dockProps) => {
+    return {
+        type: 'ADD_DOCK',
+        payload: dockProps
+    }
+}
+
 export const logout = () => {
     return {
         type: 'LOGOUT'

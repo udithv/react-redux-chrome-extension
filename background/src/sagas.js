@@ -1,6 +1,5 @@
 import { put, takeEvery, all, call } from 'redux-saga/effects'
 import { getTabInfo } from './interface';
-import { ADD_WEBPAGE, DOCK_IT } from './types';
 import request from 'axios';
 
 /* 
@@ -26,7 +25,6 @@ export function* fetchUser() {
         url: 'http://localhost:5000/api/current_user',
     }
     const user = yield call(request, userConfig);
-    console.log(user);
 
     yield put({ type: 'LOGIN_USER', payload: user.data });
 }
@@ -41,6 +39,19 @@ export function* fetchWebPage() {
     };
     
     yield put({ type: 'SHOW_WEBPAGE_DETAILS' , payload: webobj});
+}
+
+export function* fetchDocks() {
+    const dockConfig = {
+        method: 'get',
+        url: 'http://localhost:5000/api/docks'
+    }
+
+    const res = yield call(request, dockConfig);
+    console.log(res.data);
+
+    yield put({ type: 'ADD_DOCKS', payload: res.data.docks });
+
 }
 
 /* 
@@ -59,6 +70,9 @@ export function* watchFetchWebPage() {
     yield takeEvery('FETCH_WEBPAGE', fetchWebPage);
 }
 
+export function* watchFetchDocks() {
+    yield takeEvery('FETCH_DOCKS', fetchDocks);
+}
 
 
 /* 
@@ -70,6 +84,7 @@ export default function* rootSaga() {
       helloSaga(),
       watchSayHi(),
       watchFetchUser(), 
-      watchFetchWebPage()
+      watchFetchWebPage(),
+      watchFetchDocks()
     ])
   }

@@ -21,9 +21,14 @@ export const fetchWebPage = () => {
     }
 }
 
-export const fetchDocks = (docks) => {
+export const fetchDocks = () => {
     return {
-        type: FETCH_DOCKS,
-        payload: docks
+        type: 'FETCH_DOCKS'
+    }
+};
+
+export const logout = () => {
+    return {
+        type: 'LOGOUT'
     }
 };

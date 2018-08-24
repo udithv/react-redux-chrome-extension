@@ -78,7 +78,7 @@ class WebPageForm extends Component {
                             />
                         </a> 
                         <span className="dock__name">
-                            {this.props.current_dock.projectName}
+                            {this.props.current_dock ? this.props.current_dock.projectName : 'no current dock'}
                         </span>
                     </div>
                     <div className="form__group">

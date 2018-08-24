@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Store } from 'react-chrome-redux';
 
 
 import { fetchWebPage } from '../../actions';
@@ -12,12 +11,6 @@ import WebPageForm from '../webpageform/WebPageForm';
 import Dock from '../dock/Dock';
 
 const CHROME_URL_REGEX = /^(chrome:\/\/)((\w|\d)+\/*)*/;
-
-
-
-/* const proxyStore = new Store({
-  portName: 'errordock'
-}); */
 
 const isChromeURL = (url) => {
     return CHROME_URL_REGEX.test(url);
@@ -33,7 +26,6 @@ class ErrorDock extends Component {
   }
 
   componentWillMount() {
-    //proxyStore.dispatch({type: 'DOCK_IT'});
     this.props.fetchWebPage();
   }
 

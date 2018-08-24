@@ -29,7 +29,6 @@ class DockCard extends Component {
     }
 
     render() {
-        console.log(this.props.current_dock);
         return (
             <div className="dock__card">
                 <img src="img/sea-ship-with-containers.svg" alt="" className="dock__list-icon left" />
@@ -40,9 +39,9 @@ class DockCard extends Component {
     }
 }
 
-function mapStateToProps({ auth }) {
+function mapStateToProps({ current_dock }) {
     return {
-        current_dock: auth.current_dock
+        current_dock
     }
 }
 

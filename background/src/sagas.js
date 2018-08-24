@@ -77,10 +77,8 @@ export function* setCurrentDock(action) {
     }
     const res = yield call(request, dockConfig);
 
-    yield put({ type: 'UPDATE_CURRENT_DOCK', payload: res.data.current_dock });
+    yield put({ type: 'UPDATE_CURRENT_DOCK', payload: res.data.user });
 
-    yield put({ type: 'FETCH_DOCKS' });
-    
 }
 
 /* 

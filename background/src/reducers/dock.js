@@ -5,7 +5,7 @@ const currentDockReducer = (state = null, action) => {
         case 'LOGIN_USER':
             return action.payload ? action.payload.current_dock : null;
         case 'UPDATE_CURRENT_DOCK':
-            return action.payload;
+            return action.payload.current_dock;
         case 'LOGOUT':
             return null;
         default:

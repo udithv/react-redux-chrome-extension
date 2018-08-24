@@ -17,9 +17,9 @@ class App extends Component {
   }
 
   componentWillMount() {
-    axios.get('http://localhost:5000/api/current_user')
-        .then(res => this.props.fetchUser(res.data));
-    
+    /* axios.get('http://localhost:5000/api/current_user')
+        .then(res => this.props.fetchUser(res.data)); */
+      this.props.fetchUser();
   }
 
   render() {

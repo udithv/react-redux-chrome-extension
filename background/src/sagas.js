@@ -31,7 +31,7 @@ export function* fetchUser() {
     yield put({ type: 'LOGIN_USER', payload: user.data });
 }
 
-export function* dockIt() {
+export function* fetchWebPage() {
     const data = yield getTabInfo();
     const { favIconUrl, title, url } = data[0];
     const webobj = {
@@ -40,7 +40,7 @@ export function* dockIt() {
         url
     };
     
-    yield put({ type: ADD_WEBPAGE, payload: webobj});
+    yield put({ type: 'SHOW_WEBPAGE_DETAILS' , payload: webobj});
 }
 
 /* 
@@ -55,8 +55,8 @@ export function* watchSayHi() {
     yield takeEvery('SAY_HI', sayHi)
 }
 
-export function* watchDocking() {
-    yield takeEvery(DOCK_IT, dockIt);
+export function* watchFetchWebPage() {
+    yield takeEvery('FETCH_WEBPAGE', fetchWebPage);
 }
 
 
@@ -70,6 +70,6 @@ export default function* rootSaga() {
       helloSaga(),
       watchSayHi(),
       watchFetchUser(), 
-      watchDocking()
+      watchFetchWebPage()
     ])
   }

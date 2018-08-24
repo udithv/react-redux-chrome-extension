@@ -15,6 +15,12 @@ export const fetchUser = ()  => {
 };
 
 
+export const fetchWebPage = () => {
+    return {
+        type: 'FETCH_WEBPAGE'
+    }
+}
+
 export const fetchDocks = (docks) => {
     return {
         type: FETCH_DOCKS,

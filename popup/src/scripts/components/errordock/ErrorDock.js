@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import Router, { Link, goBack } from 'route-lite';
+
+
 
 import { fetchWebPage } from '../../actions';
 
@@ -17,13 +20,6 @@ const isChromeURL = (url) => {
 }
 
 class ErrorDock extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-        page: 'form' // form, docks
-    }
-  }
 
   componentWillMount() {
     this.props.fetchWebPage();
@@ -37,14 +33,14 @@ class ErrorDock extends Component {
     if(isChromeURL(this.props.webpage.url)){
       return <p>Settings</p>;
     }else {
-      if(this.state.page === 'form') {
-        return <WebPageForm 
-                  changePage={this.handleChangePage.bind(this)} 
+        return (
+              <Router>
+                <WebPageForm 
                   webpage={this.props.webpage}
                 />
-      } else if(this.state.page === 'docks') {
-        return <Dock changePage={this.handleChangePage.bind(this)} />;
-      }
+              </Router>
+                
+            );
     }
     
   }
@@ -59,7 +55,6 @@ class ErrorDock extends Component {
   }
 
   render() {
-      console.log(this.state.page);
     return (
       <div>
         {this.renderContent()}

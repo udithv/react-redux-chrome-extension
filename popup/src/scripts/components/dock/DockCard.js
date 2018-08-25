@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'route-lite';
+
 
 import { setCurrentDock } from '../../actions';
+
+import DockView from './DockView';
 
 
 class DockCard extends Component {
@@ -29,10 +33,13 @@ class DockCard extends Component {
     }
 
     render() {
+        const { id, projectName } = this.props;
         return (
             <div className="dock__card">
                 <img src="img/sea-ship-with-containers.svg" alt="" className="dock__list-icon left" />
-                <p className="left">{this.props.projectName}</p>
+                <Link component={DockView} componentProps={{ projectName, id }} >
+                    <p className="left">{this.props.projectName}</p>
+                </Link>
                 {this.renderCheck()}
             </div>
         );

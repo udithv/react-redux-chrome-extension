@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { Link } from 'route-lite';
+
+import Dock from '../dock/Dock';
+
 class WebPageForm extends Component {
     constructor(props) {
         super(props);
@@ -51,7 +55,7 @@ class WebPageForm extends Component {
                             className="form__input" 
                             placeholder="Title" 
                             value={this.state.title}
-                            onInput={event => this.setState({ title: event.target.value })}
+                            onChange={event => this.setState({ title: event.target.value })}
                             disabled={this.state.submitted}
                         />
                         <label  className="form__label">Title</label>
@@ -62,21 +66,24 @@ class WebPageForm extends Component {
                             className="form__input" 
                             placeholder="URL"  
                             value={this.state.url}
-                            onInput={event => this.setState({ url: event.target.value })}
+                            onChange={event => this.setState({ url: event.target.value })}
                             disabled 
                         />
                         <label  className="form__label">Url</label>
                     </div>
                     <div className="form__group">
-                        <a 
-                            className="btn__float btn__float--small"
-                            onClick={() => this.props.changePage('docks')}
-                        >
-                            <img 
-                            src="img/sea-ship-with-containers.svg"
-                            alt="dockit" 
-                            />
-                        </a> 
+
+                        <Link component={Dock}>
+                            <span 
+                                className="btn__float btn__float--small"
+                            >
+                                <img 
+                                src="img/sea-ship-with-containers.svg"
+                                alt="dockit" 
+                                />
+                            </span>
+                        </Link>
+                         
                         <span className="dock__name">
                             {this.props.current_dock ? this.props.current_dock.projectName : 'no current dock'}
                         </span>
@@ -86,7 +93,7 @@ class WebPageForm extends Component {
                             rows="3"
                             className="form__input" 
                             placeholder="Description" 
-                            onInput={event => this.setState({ description: event.target.value })}
+                            onChange={event => this.setState({ description: event.target.value })}
                             value={this.state.description}
                             disabled={this.state.submitted}
                         />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import { goBack } from 'route-lite';
+
 
 import DockCreate from './DockCreate';
 import DockList from './DockList';
@@ -18,7 +19,8 @@ class Dock extends Component {
             <div className="footer">
                 <div className="footer-nav">
                     <a  
-                        onClick={() => this.props.changePage('form')}
+                        onClick={() => goBack()}
+                        //onClick={() => this.props.changePage('form')}
                         className="btn__float btn__float--medium"
                     >
                         <img src="img/back-arrow.svg" alt="dockit" />

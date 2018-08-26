@@ -5,7 +5,7 @@ import request from 'axios';
 const ROOT_URL = 'http://localhost:5000';
 
 /* 
-    Worker Sagas
+    WORKER SAGAS
  */
 
 
@@ -21,6 +21,9 @@ export function* sayHi() {
 }
 
 
+/* 
+    USER WORKERS
+*/
 export function* fetchUser() {
     const userConfig = {
         method: 'get',
@@ -30,6 +33,10 @@ export function* fetchUser() {
 
     yield put({ type: 'LOGIN_USER', payload: user.data });
 }
+
+/* 
+    WEBPAGE WORKERS
+ */
 
 export function* fetchWebPage() {
     const data = yield getTabInfo();
@@ -67,11 +74,28 @@ export function* getWebPages(action) {
     };
 
     const res = yield call(request, webPageConfig);
-    console.log(res.data);
+
     yield put({ type: 'SET_WEBPAGES', payload: res.data.webpages })
     
 }
 
+export function* deleteWebPage(action) {
+
+    const webPageConfig = {
+        method: 'delete',
+        url: `${ROOT_URL}/api/webpages`,
+        data: action.payload
+    };
+
+    const res = yield call(request, webPageConfig);
+
+    yield ({ type: 'GET_WEBPAGES', payload: action.payload.dockid });
+
+}
+
+/* 
+    DOCK WORKERS
+*/
 
 export function* fetchDocks() {
     const dockConfig = {
@@ -112,16 +136,26 @@ export function* setCurrentDock(action) {
 }
 
 /* 
-    Watcher Sagas
+    WATCHER SAGAS
+ */
+
+export function* watchSayHi() {
+    yield takeEvery('SAY_HI', sayHi)
+}
+
+/* 
+    USER WATCHERS
  */
 
 export function* watchFetchUser() {
     yield takeEvery('FETCH_USER', fetchUser);
 }
 
-export function* watchSayHi() {
-    yield takeEvery('SAY_HI', sayHi)
-}
+
+
+/* 
+    WEBPAGE WATCHERS
+ */
 
 export function* watchFetchWebPage() {
     yield takeEvery('FETCH_WEBPAGE', fetchWebPage);
@@ -134,6 +168,14 @@ export function* watchDockWebPage() {
 export function* watchGetWebpages() {
     yield takeEvery('GET_WEBPAGES', getWebPages);
 }
+
+export function* watchDeleteWebpage() {
+    yield takeEvery('DELETE_WEBPAGE', deleteWebPage);
+}
+
+/* 
+    DOCK WATCHERS
+ */
 
 export function* watchFetchDocks() {
     yield takeEvery('FETCH_DOCKS', fetchDocks);
@@ -162,6 +204,7 @@ export default function* rootSaga() {
       watchFetchWebPage(),
       watchDockWebPage(),
       watchGetWebpages(),
+      watchDeleteWebpage(),
       watchFetchDocks(),
       watchAddDock(),
       watchSetCurrentDock()

@@ -10,10 +10,7 @@ class WebPageCard extends Component {
   }
 
   handleDelete() {
-      this.props.deletePage({
-          wpid: this.props.webPage._id,
-          dockid: this.props.webPage.dock
-      });
+      this.props.deletePage(this.props.webPage._id, this.props.webPage.dock);
   }
 
   render() {

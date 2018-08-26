@@ -51,11 +51,10 @@ class DockView extends Component {
 
 
     render() {
-        console.log(this.props.webpages);
         return (
             <div className="dock__view" >
                 {this.renderHeading()}
-                <WebPageList webpages={this.props.webpages} />
+                <WebPageList /* dockid={this.props.id} */ webpages={this.props.webpages} />
                 {this.renderUtilityButton()}
             </div>
         );

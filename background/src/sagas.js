@@ -68,6 +68,7 @@ export function* dockWebPage(action) {
 }
 
 export function* getWebPages(action) {
+    
     const webPageConfig = {
         method: 'get',
         url: `${ROOT_URL}/api/webpages/${action.payload}`,
@@ -76,6 +77,7 @@ export function* getWebPages(action) {
     const res = yield call(request, webPageConfig);
 
     yield put({ type: 'SET_WEBPAGES', payload: res.data.webpages })
+    
     
 }
 
@@ -89,7 +91,7 @@ export function* deleteWebPage(action) {
 
     const res = yield call(request, webPageConfig);
 
-    yield ({ type: 'GET_WEBPAGES', payload: action.payload.dockid });
+    yield put({ type: 'GET_WEBPAGES', payload: action.payload.dockid });
 
 }
 

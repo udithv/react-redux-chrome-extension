@@ -13,6 +13,10 @@ class WebPageCard extends Component {
       this.props.deletePage(this.props.webPage._id, this.props.webPage.dock);
   }
 
+  handleNewTab() {
+      window.open(this.props.webPage.url);
+  }
+
   render() {
       return (
         <div className="dock__card">
@@ -25,7 +29,11 @@ class WebPageCard extends Component {
                 <p className="left" title={this.props.webPage.url} >
                     {this.props.webPage.title}
                 </p>
-                <a className="btn__float--small right" title="Open in new tab" >
+                <a 
+                    className="btn__float--small right" 
+                    title="Open in new tab" 
+                    onClick={this.handleNewTab.bind(this)}
+                >
                     <img src="img/open_tab_single.svg" alt="open in new tab" />
                 </a>
                 <a 

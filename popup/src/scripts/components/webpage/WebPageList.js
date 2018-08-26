@@ -1,16 +1,9 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-
-import { getWebPages } from '../../actions';
 
 import WebPageCard from './WebPageCard';
 
 class WebPageList extends Component {
   
-
-  /* componentWillMount() {
-    this.props.getWebPages(this.props.dockid);
-  } */
 
   renderList() {
       return this.props.webpages.map(wp => {
@@ -29,11 +22,4 @@ class WebPageList extends Component {
 
 export default WebPageList;
 
-/* function mapStateToProps({ webpages }) {
-    return {
-        webpages
-    }
-}
 
-
-export default connect(mapStateToProps, { getWebPages })(WebPageList); */

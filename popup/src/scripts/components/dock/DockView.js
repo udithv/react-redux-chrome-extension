@@ -54,7 +54,7 @@ class DockView extends Component {
         return (
             <div className="dock__view" >
                 {this.renderHeading()}
-                <WebPageList /* dockid={this.props.id} */ webpages={this.props.webpages} />
+                <WebPageList webpages={this.props.webpages} />
                 {this.renderUtilityButton()}
             </div>
         );

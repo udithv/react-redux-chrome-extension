@@ -1,5 +1,5 @@
 import { put, takeEvery, all, call } from 'redux-saga/effects'
-import { getTabInfo } from './interface';
+import { getTabInfo, openTabs } from './interface';
 import request from 'axios';
 
 const ROOT_URL = 'http://localhost:5000';
@@ -18,6 +18,10 @@ export function* sayHi() {
     const { favIconUrl, title, url } = data;
 
     yield put({ type: 'SAID_HI', payload: 'HI' });
+}
+
+export function* openDockTabs(action) {
+    yield openTabs(action.payload);
 }
 
 
@@ -145,6 +149,10 @@ export function* watchSayHi() {
     yield takeEvery('SAY_HI', sayHi)
 }
 
+export function* watchOpenTabs() {
+    yield takeEvery('OPEN_TABS', openDockTabs);
+}
+
 /* 
     USER WATCHERS
  */
@@ -202,6 +210,7 @@ export default function* rootSaga() {
     yield all([
       helloSaga(),
       watchSayHi(),
+      watchOpenTabs(),
       watchFetchUser(), 
       watchFetchWebPage(),
       watchDockWebPage(),

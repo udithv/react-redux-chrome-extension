@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { goBack } from 'route-lite';
 
-import { getWebPages } from '../../actions';
+import { getWebPages, openTabs } from '../../actions';
 
 import WebPageList from '../webpage/WebPageList';
 
@@ -10,6 +10,10 @@ class DockView extends Component {
 
     componentWillMount() {
         this.props.getWebPages(this.props.id);
+    }
+
+    handleMultiple() {
+        this.props.openTabs(this.props.webpages.map(wp => wp.url));
     }
 
     renderHeading() {
@@ -34,6 +38,7 @@ class DockView extends Component {
                     <a 
                         className="btn__float btn__float--medium"
                         title="Open all webpages"
+                        onClick={this.handleMultiple.bind(this)}
                     >
                         <img src="img/open_tab_multiple.svg" alt="dockit"/>
                     </a>
@@ -67,4 +72,4 @@ function mapStateToProps({ webpages }) {
     }
 }
 
-export default connect(mapStateToProps, { getWebPages })(DockView);
+export default connect(mapStateToProps, { getWebPages, openTabs })(DockView);

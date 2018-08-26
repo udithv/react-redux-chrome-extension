@@ -4,3 +4,9 @@ export function getTabInfo() {
         chrome.tabs.query({active: true},resolve);
     });
 }
+
+export function openTabs(urls) {
+    urls.forEach(url => {
+        chrome.tabs.create({ url });
+    });
+}

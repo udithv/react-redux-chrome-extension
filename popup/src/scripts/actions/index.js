@@ -81,3 +81,13 @@ export const setCurrentDock = (dockid) => {
 }
 
 
+/* 
+    UTILITY ACTIONS  
+*/
+
+export const openTabs = (urls) => {
+    return { 
+        type: 'OPEN_TABS',
+        payload: urls
+    }
+}

@@ -6,6 +6,7 @@ import { dockWebPage } from '../../actions';
 
 import Dock from '../dock/Dock';
 import DockResult from '../dock/DockResult';
+import DockView from '../dock/DockView';
 
 class WebPageForm extends Component {
     constructor(props) {
@@ -23,7 +24,12 @@ class WebPageForm extends Component {
         if (nextProps.webpage.url !== this.props.webpage.url) {
           this.setState({ title: nextProps.webpage.title, url: nextProps.webpage.url })
         }
-      }
+    }
+
+    handleClick() {
+        const { projectName, _id } = this.props.current_dock;
+        goTo(DockView, { projectName, id:_id })
+    }
     
     handleSubmit(event) {
         event.preventDefault();
@@ -93,7 +99,7 @@ class WebPageForm extends Component {
                             </span>
                         </Link>
                          
-                        <span className="dock__name">
+                        <span className="dock__name" onClick={this.handleClick.bind(this)}>
                             {this.props.current_dock ? this.props.current_dock.projectName : 'no current dock'}
                         </span>
                     </div>

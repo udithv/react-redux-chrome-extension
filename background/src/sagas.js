@@ -41,6 +41,23 @@ export function* fetchWebPage() {
     };
     
     yield put({ type: 'SHOW_WEBPAGE_DETAILS' , payload: webobj});
+
+    yield put({ type: 'SET_SUBMITTED_WEBPAGE' });
+}
+
+export function* dockWebPage(action) {
+    const webPageConfig = {
+        method: 'post',
+        url: `${ROOT_URL}/api/webpages`,
+        data: action.payload
+    }
+
+    const res = yield call(request, webPageConfig);
+
+    if(res.data.success) {
+        yield put({ type: 'SUBMITTED_WEBPAGE' });
+    }
+
 }
 
 export function* fetchDocks() {
@@ -97,6 +114,10 @@ export function* watchFetchWebPage() {
     yield takeEvery('FETCH_WEBPAGE', fetchWebPage);
 }
 
+export function* watchDockWebPage() {
+    yield takeEvery('DOCK_WEBPAGE', dockWebPage);
+}
+
 export function* watchFetchDocks() {
     yield takeEvery('FETCH_DOCKS', fetchDocks);
 }
@@ -110,6 +131,8 @@ export function* watchSetCurrentDock() {
 }
 
 
+
+
 /* 
     Root Saga
  */
@@ -120,6 +143,7 @@ export default function* rootSaga() {
       watchSayHi(),
       watchFetchUser(), 
       watchFetchWebPage(),
+      watchDockWebPage(),
       watchFetchDocks(),
       watchAddDock(),
       watchSetCurrentDock()

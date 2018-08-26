@@ -1,12 +1,9 @@
 import { FETCH_USER, FETCH_DOCKS } from '../constants';
 
 
-/* export const fetchUser = (user)  => {
-    return {
-        type: FETCH_USER,
-        payload: user
-    }
-}; */
+/* 
+    USER ACTIONS
+*/
 
 export const fetchUser = ()  => {
     return {
@@ -14,12 +11,39 @@ export const fetchUser = ()  => {
     }
 };
 
+export const logout = () => {
+    return {
+        type: 'LOGOUT'
+    }
+};
+
+
+/* 
+    WEBPAGE ACTIONS
+ */
+
 
 export const fetchWebPage = () => {
     return {
         type: 'FETCH_WEBPAGE'
     }
 }
+
+export const dockWebPage = (webPageProps, dockid) => {
+    console.log(dockid);
+    return {
+        type: 'DOCK_WEBPAGE',
+        payload: {
+            webPageProps,
+            dockid
+        }
+    }
+}
+
+
+/* 
+    DOCK ACTIONS
+ */
 
 export const fetchDocks = () => {
     return {
@@ -41,8 +65,4 @@ export const setCurrentDock = (dockid) => {
     }
 }
 
-export const logout = () => {
-    return {
-        type: 'LOGOUT'
-    }
-};
+

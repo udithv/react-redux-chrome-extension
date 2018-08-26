@@ -30,13 +30,13 @@ class ErrorDock extends Component {
   }
 
   pageContent() {
-    if(isChromeURL(this.props.webpage.url)){
+    if(isChromeURL(this.props.selected_webpage.url)){
       return <p>Settings</p>;
     }else {
         return (
               <Router>
                 <WebPageForm 
-                  webpage={this.props.webpage}
+                  webpage={this.props.selected_webpage}
                 />
               </Router>
                 
@@ -65,9 +65,9 @@ class ErrorDock extends Component {
 }
 
 
-function mapStateToProps({ webpage }) {
+function mapStateToProps({ selected_webpage }) {
   return {
-    webpage
+    selected_webpage
   }
 }
 

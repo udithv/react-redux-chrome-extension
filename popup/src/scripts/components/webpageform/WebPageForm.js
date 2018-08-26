@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { Link } from 'route-lite';
+
+import { dockWebPage } from '../../actions';
 
 import Dock from '../dock/Dock';
 
@@ -25,7 +26,14 @@ class WebPageForm extends Component {
     
     handleSubmit(event) {
         event.preventDefault();
-        console.log(this.state);
+        const { title, url } = this.state;
+        const { favIconUrl } = this.props.webpage;
+        this.props.dockWebPage({
+            title,
+            url,
+            favIconUrl
+        }, this.props.current_dock._id);
+        this.setState({ submitted: true });
     }
 
     renderSubmitButton() {
@@ -108,10 +116,12 @@ class WebPageForm extends Component {
     }
 }
 
-function mapStateToProps({ current_dock }) {
+function mapStateToProps({ current_dock, selected_webpage, submitted_webpage }) {
     return {
-        current_dock
+        current_dock,
+        selected_webpage,
+        submitted_webpage
     }
 }
 
-export default connect(mapStateToProps)(WebPageForm);
+export default connect(mapStateToProps, { dockWebPage })(WebPageForm);

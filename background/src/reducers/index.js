@@ -2,7 +2,7 @@ import {combineReducers} from 'redux';
 
 import auth from './auth';
 import test from './test';
-import { selectedWebPage, submittedWebPage } from './webpage';
+import { selectedWebPage, submittedWebPage, currentWebpagesReducer} from './webpage';
 import { currentDockReducer, docksReducer } from './dock';
 
 export default combineReducers({
@@ -11,5 +11,6 @@ export default combineReducers({
   docks: docksReducer,
   selected_webpage: selectedWebPage,
   submitted_webpage: submittedWebPage,
+  webpages: currentWebpagesReducer,
   test
 });

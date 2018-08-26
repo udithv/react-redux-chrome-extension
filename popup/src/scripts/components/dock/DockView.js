@@ -1,20 +1,71 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { goBack } from 'route-lite';
 
+import { getWebPages } from '../../actions';
+
+import WebPageList from '../webpage/WebPageList';
 
 class DockView extends Component {
-    render() {
+
+    componentWillMount() {
+        this.props.getWebPages(this.props.id);
+    }
+
+    renderHeading() {
         return (
-            <div>
-                DockView
+            <div className="dock__heading">
                 {this.props.projectName}
-                {this.props.id}
-                <div onClick={() => goBack()}>
-                    goback
+            </div>
+        );
+    }
+
+    renderUtilityButton() {
+        return (
+            <div className="footer">
+                <div className="footer-nav">
+                    <a 
+                        onClick={() => goBack()} 
+                        className="btn__float btn__float--medium"
+                        title="Go Back"
+                    >
+                        <img src="img/back-arrow.svg" alt="dockit" />
+                    </a>
+                    <a 
+                        className="btn__float btn__float--medium"
+                        title="Open all webpages"
+                    >
+                        <img src="img/open_tab_multiple.svg" alt="dockit"/>
+                    </a>
+                    <a 
+                        className="btn__float btn__float--medium"
+                        title="Delete dock"
+                    >
+                        <img src="img/delete.svg" alt="dockit"/>
+                    </a>
                 </div>
+            </div>
+        );
+    }
+
+
+
+    render() {
+        console.log(this.props.webpages);
+        return (
+            <div className="dock__view" >
+                {this.renderHeading()}
+                <WebPageList webpages={this.props.webpages} />
+                {this.renderUtilityButton()}
             </div>
         );
     }
 }
 
-export default DockView;
+function mapStateToProps({ webpages }) {
+    return {
+        webpages
+    }
+}
+
+export default connect(mapStateToProps, { getWebPages })(DockView);

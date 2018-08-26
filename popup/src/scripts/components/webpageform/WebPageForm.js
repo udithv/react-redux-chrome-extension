@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'route-lite';
+import { Link, goTo } from 'route-lite';
 
 import { dockWebPage } from '../../actions';
 
 import Dock from '../dock/Dock';
+import DockResult from '../dock/DockResult';
 
 class WebPageForm extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class WebPageForm extends Component {
             url,
             favIconUrl
         }, this.props.current_dock._id);
-        this.setState({ submitted: true });
+        goTo(DockResult, { message: 'hi' });
     }
 
     renderSubmitButton() {

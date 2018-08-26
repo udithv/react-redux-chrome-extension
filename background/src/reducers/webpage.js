@@ -20,8 +20,18 @@ const submittedWebPage = (state = null, action) => {
     }
 };
 
+const currentWebpagesReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'SET_WEBPAGES':
+      return action.payload;
+    default: 
+      return state;
+  }
+};
+
 
 export {
     selectedWebPage,
-    submittedWebPage
+    submittedWebPage,
+    currentWebpagesReducer
 }

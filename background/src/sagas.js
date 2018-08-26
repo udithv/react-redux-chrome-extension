@@ -60,6 +60,19 @@ export function* dockWebPage(action) {
 
 }
 
+export function* getWebPages(action) {
+    const webPageConfig = {
+        method: 'get',
+        url: `${ROOT_URL}/api/webpages/${action.payload}`,
+    };
+
+    const res = yield call(request, webPageConfig);
+    console.log(res.data);
+    yield put({ type: 'SET_WEBPAGES', payload: res.data.webpages })
+    
+}
+
+
 export function* fetchDocks() {
     const dockConfig = {
         method: 'get',
@@ -118,6 +131,10 @@ export function* watchDockWebPage() {
     yield takeEvery('DOCK_WEBPAGE', dockWebPage);
 }
 
+export function* watchGetWebpages() {
+    yield takeEvery('GET_WEBPAGES', getWebPages);
+}
+
 export function* watchFetchDocks() {
     yield takeEvery('FETCH_DOCKS', fetchDocks);
 }
@@ -144,6 +161,7 @@ export default function* rootSaga() {
       watchFetchUser(), 
       watchFetchWebPage(),
       watchDockWebPage(),
+      watchGetWebpages(),
       watchFetchDocks(),
       watchAddDock(),
       watchSetCurrentDock()

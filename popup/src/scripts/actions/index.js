@@ -30,13 +30,28 @@ export const fetchWebPage = () => {
 }
 
 export const dockWebPage = (webPageProps, dockid) => {
-    console.log(dockid);
+
     return {
         type: 'DOCK_WEBPAGE',
         payload: {
             webPageProps,
             dockid
         }
+    }
+}
+
+export const getWebPages = (dockid)  => {
+    return {
+        type: 'GET_WEBPAGES',
+        payload: dockid
+    }
+}
+
+
+export const deletePage = (wpid, dockid) => {
+    return {
+        type: 'DELETE_WEBPAGE',
+        payload: { wpid, dockid }
     }
 }
 

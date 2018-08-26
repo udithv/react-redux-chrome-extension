@@ -1,1 +1,1 @@
-# ed chrome extension# project-captain-cook
+# project-captain-cook

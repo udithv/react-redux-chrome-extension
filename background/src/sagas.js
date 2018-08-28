@@ -82,7 +82,10 @@ export function* getWebPages(action) {
 
     yield put({ type: 'SET_WEBPAGES', payload: res.data.webpages })
     
-    
+}
+
+export function* clearWebPages() {
+    yield put({ type: 'RESET_WEBPAGES' })
 }
 
 export function* deleteWebPage(action) {
@@ -191,6 +194,10 @@ export function* watchGetWebpages() {
     yield takeEvery('GET_WEBPAGES', getWebPages);
 }
 
+export function* watchClearWebPages() {
+    yield takeEvery('CLEAR_WEBPAGES', clearWebPages);
+}
+
 export function* watchDeleteWebpage() {
     yield takeEvery('DELETE_WEBPAGE', deleteWebPage);
 }
@@ -231,6 +238,7 @@ export default function* rootSaga() {
       watchFetchWebPage(),
       watchDockWebPage(),
       watchGetWebpages(),
+      watchClearWebPages(),
       watchDeleteWebpage(),
       watchFetchDocks(),
       watchAddDock(),

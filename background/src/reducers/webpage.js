@@ -24,6 +24,8 @@ const currentWebpagesReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_WEBPAGES':
       return action.payload;
+    case 'RESET_WEBPAGES':
+      return [];
     default: 
       return state;
   }

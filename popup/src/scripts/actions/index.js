@@ -45,6 +45,12 @@ export const getWebPages = (dockid)  => {
     }
 }
 
+export const clearWebpages = () => {
+    return {
+        type: 'CLEAR_WEBPAGES'
+    }
+}
+
 
 export const deletePage = (wpid, dockid) => {
     return {

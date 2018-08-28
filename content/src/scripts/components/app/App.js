@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        Count: 100 {this.props.auth}
+        Logged In
       </div>
     );
   }

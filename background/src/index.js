@@ -27,6 +27,8 @@ wrapStore(store, {
 });
 
 
+//chrome.browserAction.setBadgeText({ text: '❤'});
+
 
 
 

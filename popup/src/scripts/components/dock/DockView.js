@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { goBack } from 'route-lite';
+import { goBack, goTo } from 'route-lite';
 
 import { getWebPages, openTabs } from '../../actions';
 
 import WebPageList from '../webpage/WebPageList';
+import DockDelete from './DockDelete';
 
 class DockView extends Component {
 
@@ -25,6 +26,8 @@ class DockView extends Component {
     }
 
     renderUtilityButton() {
+        const { projectName, id } = this.props;
+
         return (
             <div className="footer">
                 <div className="footer-nav">
@@ -45,6 +48,7 @@ class DockView extends Component {
                     <a 
                         className="btn__float btn__float--medium"
                         title="Delete dock"
+                        onClick={() => goTo(DockDelete, { projectName, id })}
                     >
                         <img src="img/delete.svg" alt="dockit"/>
                     </a>

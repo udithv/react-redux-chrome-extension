@@ -1,5 +1,3 @@
-import { FETCH_USER, FETCH_DOCKS } from '../constants';
-
 
 /* 
     USER ACTIONS
@@ -7,7 +5,7 @@ import { FETCH_USER, FETCH_DOCKS } from '../constants';
 
 export const fetchUser = ()  => {
     return {
-        type: FETCH_USER
+        type: 'FETCH_USER'
     }
 };
 

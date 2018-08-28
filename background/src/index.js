@@ -8,13 +8,11 @@ import createSagaMiddleware from 'redux-saga';
 
 
 import rootSaga from './sagas';
-import aliases from './aliases';
 
 const sagaMiddleware = createSagaMiddleware()
 const store = createStore(
   rootReducer, 
   applyMiddleware(
-      alias(aliases),
       sagaMiddleware
    )
 );

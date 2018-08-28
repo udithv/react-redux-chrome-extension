@@ -73,6 +73,13 @@ export const addDock = (dockProps) => {
     }
 }
 
+export const deleteDock  = (dockid) => {
+    return {
+        type: 'DELETE_DOCK',
+        payload: { dockid }
+    }
+}
+
 export const setCurrentDock = (dockid) => {
     return {
         type: 'SET_CURRENT_DOCK',

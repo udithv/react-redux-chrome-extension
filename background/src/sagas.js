@@ -126,6 +126,18 @@ export function* addDock(action) {
     yield put({ type: 'FETCH_DOCKS' });
 }
 
+export function* deleteDock(action) {
+    const dockConfig = {
+        method: 'delete',
+        url: `${ROOT_URL}/api/docks`,
+        data: action.payload 
+    }
+
+    const res = yield call(request, dockConfig);
+
+    yield put({ type: 'FETCH_DOCKS' });
+}
+
 export function* setCurrentDock(action) {
 
     const dockConfig = {
@@ -195,6 +207,10 @@ export function* watchAddDock() {
     yield takeEvery('ADD_DOCK', addDock);
 }
 
+export function* watchDeleteDock() {
+    yield takeEvery('DELETE_DOCK', deleteDock);
+}
+
 export function* watchSetCurrentDock() {
     yield takeEvery('SET_CURRENT_DOCK', setCurrentDock);
 }
@@ -218,6 +234,7 @@ export default function* rootSaga() {
       watchDeleteWebpage(),
       watchFetchDocks(),
       watchAddDock(),
+      watchDeleteDock(),
       watchSetCurrentDock()
     ])
   }

@@ -14,8 +14,14 @@
       "tabs"
     ],
     "browser_action": {
-      "default_title": "errordock",
-      "default_popup": "popup.html"
+      "default_title": "ErrorDock",
+      "default_popup": "popup.html",
+      "default_icon": {                    
+        "16": "img/ext-icon/big-anchor16.png",          
+        "32": "img/ext-icon/big-anchor32.png",
+        "48": "img/ext-icon/big-anchor48.png",
+        "128": "img/ext-icon/big-anchor128.png"            
+      }
     },
     "content_scripts": [
       {

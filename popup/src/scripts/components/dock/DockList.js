@@ -5,7 +5,16 @@ import DockCard from './DockCard';
 
 
 class DockList extends Component {
-    render() {
+
+    renderLoader() {
+        return (
+            <div className="dock__loading">
+                <img src="img/wheel.svg" alt="" className="loader loader__large" />
+            </div>
+        );
+    }
+
+    renderList() {
         return (
             <div className="dock__list">
                 {
@@ -18,6 +27,14 @@ class DockList extends Component {
                     })
                 }
                 
+            </div>
+        );
+    }
+
+    render() {
+        return (
+            <div>
+                { (this.props.docks.length === 0) ? this.renderLoader() : this.renderList() }
             </div>
         );
     }

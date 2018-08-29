@@ -493,11 +493,6 @@ body {
     margin-right: .5rem;
     width: 3rem;
     height: 3rem; }
-  .loader__large {
-    margin-top: 7.5rem;
-    margin-bottom: 7.5rem;
-    width: 15rem;
-    height: 15rem; }
 
 .chrome-ext__body {
   height: 55rem;
@@ -518,6 +513,53 @@ body {
 
 .footer a {
   margin: 1rem; }
+
+.header {
+  height: 95vh;
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 35px; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - (6rem * 2)) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - (6rem * 3)) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }
 
 .login {
   text-align: center; }
@@ -572,8 +614,7 @@ body {
 .dock__name {
   margin-left: .8rem;
   border-bottom: 3px solid #006df0;
-  color: black;
-  cursor: pointer; }
+  color: black; }
 
 .dock-create__form {
   margin: 2rem 1.6rem; }
@@ -643,20 +684,3 @@ body {
     color: #006df0;
     font-size: 4rem;
     animation: moveInBottom 5s ease-out .3s; }
-
-.dock__message {
-  text-align: center;
-  height: 20rem;
-  margin-top: 10rem; }
-  .dock__message-main {
-    font-weight: 500;
-    font-size: 4rem;
-    color: #006df0; }
-  .dock__message-secondary {
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: grey; }
-
-.dock__loading {
-  text-align: center;
-  height: 30rem; }

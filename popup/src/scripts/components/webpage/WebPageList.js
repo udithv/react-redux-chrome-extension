@@ -13,7 +13,11 @@ class WebPageList extends Component {
 
   renderContent() {
     if(this.props.webpages == null){
-        return <div>loading</div>;
+        return (
+            <div className="dock__loading">
+                <img src="img/wheel.svg" alt="" className="loader loader__large" />
+            </div>
+        );
     }else if(this.props.webpages.length === 0){
         return <div>No webpages yet</div>
     }else {

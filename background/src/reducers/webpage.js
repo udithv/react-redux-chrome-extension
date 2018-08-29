@@ -25,7 +25,7 @@ const currentWebpagesReducer = (state = [], action) => {
     case 'SET_WEBPAGES':
       return action.payload;
     case 'RESET_WEBPAGES':
-      return [];
+      return null;
     default: 
       return state;
   }

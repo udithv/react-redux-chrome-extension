@@ -143,6 +143,8 @@ export function* deleteDock(action) {
 
 export function* setCurrentDock(action) {
 
+    yield put({ type: 'SET_NEXT_CURRENT_DOCK', payload: action.payload })
+    
     const dockConfig = {
         method: 'post',
         url: `${ROOT_URL}/api/docks/current_dock`,

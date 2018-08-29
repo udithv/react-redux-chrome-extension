@@ -20,7 +20,7 @@ const submittedWebPage = (state = null, action) => {
     }
 };
 
-const currentWebpagesReducer = (state = [], action) => {
+const currentWebpagesReducer = (state = null, action) => {
   switch (action.type) {
     case 'SET_WEBPAGES':
       return action.payload;

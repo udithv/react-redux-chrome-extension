@@ -12,6 +12,17 @@ const currentDockReducer = (state = null, action) => {
     }
 }
 
+const nextCurrentDockReducer = (state = null, action) => {
+    switch(action.type) {
+        case 'SET_NEXT_CURRENT_DOCK':
+            return action.payload;
+        case 'UPDATE_CURRENT_DOCK':
+            return null;
+        default:
+            return state;
+    }
+}
+
 const docksReducer = (state = [], action) => {
     switch(action.type) {
         case 'ADD_DOCKS':
@@ -25,6 +36,7 @@ const docksReducer = (state = [], action) => {
 
 export {
     currentDockReducer,
+    nextCurrentDockReducer,
     docksReducer
 }
 

@@ -15,20 +15,36 @@ class DockCard extends Component {
     }
 
     renderCheck() {
-        if(this.props.id === this.props.current_dock._id) {
-            return (
-                <img src="img/active.svg" alt="selected" className="dock__list-icon right" />
-            );
-        }
 
-        return (
-            <img 
-                src="img/inactive.svg" 
-                alt="unselected" 
-                className="dock__list-icon right"
-                onClick={this.handleClickSelect.bind(this)}
-            />
-        );
+        if(this.props.nxt_curr_dock) {
+            if(this.props.id === this.props.nxt_curr_dock) {
+                return <img src="img/wheel.svg" alt="loading" className="loader loader__small right" />;
+            }else {
+                return (
+                    <img 
+                        src="img/inactive.svg" 
+                        alt="unselected" 
+                        className="dock__list-icon right"
+                        onClick={this.handleClickSelect.bind(this)}
+                    />
+                );
+            }
+        }else {
+            if(this.props.id === this.props.current_dock._id) {
+                return (
+                    <img src="img/active.svg" alt="selected" className="dock__list-icon right" />
+                );
+            }else {
+                return (
+                    <img 
+                        src="img/inactive.svg" 
+                        alt="unselected" 
+                        className="dock__list-icon right"
+                        onClick={this.handleClickSelect.bind(this)}
+                    />
+                );
+            }
+        }
         
     }
 
@@ -46,9 +62,10 @@ class DockCard extends Component {
     }
 }
 
-function mapStateToProps({ current_dock }) {
+function mapStateToProps({ current_dock, nxt_curr_dock }) {
     return {
-        current_dock
+        current_dock,
+        nxt_curr_dock
     }
 }
 

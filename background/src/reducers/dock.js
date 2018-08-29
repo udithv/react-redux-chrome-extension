@@ -1,4 +1,3 @@
-import { FETCH_USER, FETCH_DOCKS } from '../types';
 
 const currentDockReducer = (state = null, action) => {
     switch(action.type) {

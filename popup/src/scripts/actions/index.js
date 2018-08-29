@@ -1,5 +1,3 @@
-import { FETCH_USER, FETCH_DOCKS } from '../constants';
-
 
 /* 
     USER ACTIONS
@@ -7,7 +5,7 @@ import { FETCH_USER, FETCH_DOCKS } from '../constants';
 
 export const fetchUser = ()  => {
     return {
-        type: FETCH_USER
+        type: 'FETCH_USER'
     }
 };
 
@@ -47,6 +45,12 @@ export const getWebPages = (dockid)  => {
     }
 }
 
+export const clearWebpages = () => {
+    return {
+        type: 'CLEAR_WEBPAGES'
+    }
+}
+
 
 export const deletePage = (wpid, dockid) => {
     return {
@@ -70,6 +74,13 @@ export const addDock = (dockProps) => {
     return {
         type: 'ADD_DOCK',
         payload: dockProps
+    }
+}
+
+export const deleteDock  = (dockid) => {
+    return {
+        type: 'DELETE_DOCK',
+        payload: { dockid }
     }
 }
 

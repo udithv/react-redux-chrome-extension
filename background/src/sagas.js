@@ -82,7 +82,10 @@ export function* getWebPages(action) {
 
     yield put({ type: 'SET_WEBPAGES', payload: res.data.webpages })
     
-    
+}
+
+export function* clearWebPages() {
+    yield put({ type: 'RESET_WEBPAGES' })
 }
 
 export function* deleteWebPage(action) {
@@ -121,6 +124,18 @@ export function* addDock(action) {
         url: `${ROOT_URL}/api/docks`,
         data: action.payload
     }
+    const res = yield call(request, dockConfig);
+
+    yield put({ type: 'FETCH_DOCKS' });
+}
+
+export function* deleteDock(action) {
+    const dockConfig = {
+        method: 'delete',
+        url: `${ROOT_URL}/api/docks`,
+        data: action.payload 
+    }
+
     const res = yield call(request, dockConfig);
 
     yield put({ type: 'FETCH_DOCKS' });
@@ -179,6 +194,10 @@ export function* watchGetWebpages() {
     yield takeEvery('GET_WEBPAGES', getWebPages);
 }
 
+export function* watchClearWebPages() {
+    yield takeEvery('CLEAR_WEBPAGES', clearWebPages);
+}
+
 export function* watchDeleteWebpage() {
     yield takeEvery('DELETE_WEBPAGE', deleteWebPage);
 }
@@ -193,6 +212,10 @@ export function* watchFetchDocks() {
 
 export function* watchAddDock() {
     yield takeEvery('ADD_DOCK', addDock);
+}
+
+export function* watchDeleteDock() {
+    yield takeEvery('DELETE_DOCK', deleteDock);
 }
 
 export function* watchSetCurrentDock() {
@@ -215,9 +238,11 @@ export default function* rootSaga() {
       watchFetchWebPage(),
       watchDockWebPage(),
       watchGetWebpages(),
+      watchClearWebPages(),
       watchDeleteWebpage(),
       watchFetchDocks(),
       watchAddDock(),
+      watchDeleteDock(),
       watchSetCurrentDock()
     ])
   }

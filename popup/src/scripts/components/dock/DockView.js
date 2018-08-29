@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { goBack, goTo } from 'route-lite';
 
-import { getWebPages, openTabs } from '../../actions';
+import { getWebPages, openTabs, clearWebpages } from '../../actions';
 
 import WebPageList from '../webpage/WebPageList';
 import DockDelete from './DockDelete';
@@ -11,6 +11,10 @@ class DockView extends Component {
 
     componentWillMount() {
         this.props.getWebPages(this.props.id);
+    }
+
+    componentWillUnmount() {
+        this.props.clearWebpages();
     }
 
     handleMultiple() {
@@ -76,4 +80,4 @@ function mapStateToProps({ webpages }) {
     }
 }
 
-export default connect(mapStateToProps, { getWebPages, openTabs })(DockView);
+export default connect(mapStateToProps, { getWebPages, openTabs, clearWebpages })(DockView);

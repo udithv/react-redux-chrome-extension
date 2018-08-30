@@ -26,15 +26,15 @@ class WebPageCard extends Component {
                     alt="favicon"
                     className="dock__list-icon left"
                 />
-                <p className="left" title={this.props.webPage.url} >
+                <p className="left" title={this.props.webPage.title} >
                     {this.props.webPage.title}
                 </p>
                 <a 
                     className="btn__float--small right" 
-                    title="Open in new tab" 
+                    title={this.props.webPage.url} 
                     onClick={this.handleNewTab.bind(this)}
                 >
-                    <img src="img/open_tab_single.svg" alt="open in new tab" />
+                    <img src="img/external-link.svg" alt="open in new tab" />
                 </a>
                 <a 
                     className="btn__float--small right" 

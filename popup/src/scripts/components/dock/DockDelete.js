@@ -18,7 +18,7 @@ class DockDelete extends Component {
             <div className="dock__message">
                 <span className="dock__message-main">Are you Sure ?</span>
                 <p className="dock__message-secondary">
-                    The dock has 10 webpages
+                    All webpages will be deleted
                 </p>
             </div>
         );

@@ -14,8 +14,7 @@ class WebPageForm extends Component {
         this.state = {
             title: props.webpage.title,
             url: props.webpage.url,
-            description: '',
-            submitted: false
+            description: ''
         }
     }
 
@@ -40,7 +39,7 @@ class WebPageForm extends Component {
             url,
             favIconUrl
         }, this.props.current_dock._id);
-        goTo(DockResult, { message: 'hi' });
+        goTo(DockResult);
     }
 
     renderSubmitButton() {
@@ -115,7 +114,7 @@ class WebPageForm extends Component {
                         <label className="form__label">Description</label>
                     </div>
                     <div className="form__group">
-                        {this.state.submitted ? 'loader' : this.renderSubmitButton() }
+                        { this.renderSubmitButton() }
                     </div>
                 </form>
             </div>

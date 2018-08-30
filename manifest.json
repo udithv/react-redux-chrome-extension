@@ -23,6 +23,12 @@
         "128": "img/ext-icon/big-anchor128.png"            
       }
     },
+    "icons": {
+      "16": "img/ext-icon/big-anchor16.png",          
+      "32": "img/ext-icon/big-anchor32.png",
+      "48": "img/ext-icon/big-anchor48.png",
+      "128": "img/ext-icon/big-anchor128.png"  
+    },
     "content_scripts": [
       {
         "matches": ["http://localhost:5000/login_success"],

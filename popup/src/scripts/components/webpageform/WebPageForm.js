@@ -8,6 +8,8 @@ import Dock from '../dock/Dock';
 import DockResult from '../dock/DockResult';
 import DockView from '../dock/DockView';
 
+import WebPageQRCodeView from '../webpage/WebPageQRCodeView';
+
 class WebPageForm extends Component {
     constructor(props) {
         super(props);
@@ -40,6 +42,11 @@ class WebPageForm extends Component {
             favIconUrl
         }, this.props.current_dock._id);
         goTo(DockResult);
+    }
+
+    handleWebPageQRCode() {
+        const { title, url } = this.state;
+        goTo(WebPageQRCodeView, { title, url })
     }
 
     renderSubmitButton() {
@@ -83,6 +90,13 @@ class WebPageForm extends Component {
                             onChange={event => this.setState({ url: event.target.value })}
                             disabled 
                         />
+                        <a 
+                            className="form__input-icon" 
+                            title="Get QRCode"
+                            onClick={this.handleWebPageQRCode.bind(this)}
+                        >
+                            <img src="img/qrcode.svg" alt="qrcode"  />
+                        </a>
                         <label  className="form__label">Url</label>
                     </div>
                     <div className="form__group">

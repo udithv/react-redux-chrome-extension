@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { goTo } from 'route-lite';
 
 import { deletePage } from '../../actions';
 
+import WebPageQRCodeView from './WebPageQRCodeView';
 
 class WebPageCard extends Component {
   constructor(props) {
@@ -15,6 +17,11 @@ class WebPageCard extends Component {
 
   handleNewTab() {
       window.open(this.props.webPage.url);
+  }
+
+  handleWebPageQRCode() {
+      const { title, url } = this.props.webPage;
+      goTo(WebPageQRCodeView, { title, url })
   }
 
   render() {
@@ -31,6 +38,13 @@ class WebPageCard extends Component {
                 </p>
                 <a 
                     className="btn__float--small right" 
+                    title="Get QRCode" 
+                    onClick={this.handleWebPageQRCode.bind(this)}
+                >
+                    <img src="img/qrcode.svg" alt="get qrcode" />
+                </a>
+                <a 
+                    className="btn__float--small right" 
                     title={this.props.webPage.url} 
                     onClick={this.handleNewTab.bind(this)}
                 >
@@ -38,7 +52,7 @@ class WebPageCard extends Component {
                 </a>
                 <a 
                     className="btn__float--small right" 
-                    title="delete webpage"
+                    title="Delete webpage"
                     onClick={this.handleDelete.bind(this)}
                 >
                     <img src="img/delete.svg" alt="delete" />

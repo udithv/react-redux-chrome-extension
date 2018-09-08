@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment } from 'react';
 import {connect} from 'react-redux';
 import Router, { Link, goBack } from 'route-lite';
 
@@ -8,6 +8,7 @@ import { fetchWebPage } from '../../actions';
 //Components
 import Header from '../header/Header';
 import WebPageForm from '../webpageform/WebPageForm';
+import Menu from '../menu/Menu';
 import SettingsMain from '../settings/SettingsMain';
 
 const CHROME_URL_REGEX = /^(chrome:\/\/)((\w|\d)+\/*)*/;
@@ -28,7 +29,11 @@ class ErrorDock extends Component {
 
   pageContent() {
     if(isChromeURL(this.props.selected_webpage.url)){
-      return <SettingsMain />;
+      return (
+        <Router>
+          <Menu />
+        </Router>
+      );
     }else {
         return (
               <Router>
@@ -44,18 +49,18 @@ class ErrorDock extends Component {
 
   renderContent(){
     return (
-      <div>
+      <Fragment>
         <Header />
         {this.pageContent()}
-      </div> 
+      </Fragment> 
     );
   }
 
   render() {
     return (
-      <div>
+      <Fragment>
         {this.renderContent()}
-      </div>
+      </Fragment>
     );
   }
 

@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { goTo } from 'route-lite';
+import { goBack } from 'route-lite';
 
-import WebpageForm from  '../webpageform/WebPageForm';
 import DockCreate from './DockCreate';
 import DockList from './DockList';
 
 import { fetchDocks } from '../../actions';
-import WebPageForm from '../webpageform/WebPageForm';
 
 class Dock extends Component {
 
@@ -20,7 +18,7 @@ class Dock extends Component {
             <div className="footer">
                 <div className="footer-nav">
                     <a  
-                        onClick={() => goTo(WebPageForm, { webpage: this.props.selected_webpage })}
+                        onClick={() => goBack()/* goTo(WebPageForm, { webpage: this.props.selected_webpage }) */}
                         className="btn__float btn__float--medium"
                     >
                         <img src="img/back-arrow.svg" alt="dockit" />

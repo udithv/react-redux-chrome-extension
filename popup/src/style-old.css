@@ -65,6 +65,16 @@ html {
 body {
   box-sizing: border-box; }
 
+::-webkit-scrollbar {
+  width: 0px;
+  /* remove scrollbar space */
+  background: transparent;
+  /* optional: just make scrollbar invisible */ }
+
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+  background: #006df0; }
+
 body {
   font-family: "Lato", sans-serif;
   font-weight: 400;
@@ -434,7 +444,8 @@ body {
     font-weight: 100; }
 
 .form__group {
-  margin-left: 2rem; }
+  margin-left: 2rem;
+  position: relative; }
 
 .form__group-inline {
   margin: .5rem; }
@@ -461,6 +472,20 @@ body {
     border-bottom: 3px solid #006df0; }
   .form__input::-webkit-input-placeholder {
     color: lightblue; }
+  .form__input-icon, .form__input-icon:link, .form__input-icon:visited {
+    text-decoration: none;
+    position: absolute;
+    cursor: pointer;
+    left: -2px;
+    top: 13px;
+    transition: all .2s; }
+  .form__input-icon img {
+    height: 2rem;
+    width: 2rem; }
+  .form__input-icon:hover {
+    transform: scale(1.2); }
+  .form__input-icon:active, .form__input-icon:focus {
+    transform: scale(1); }
 
 .form__input-inline {
   font-size: 1.5rem;
@@ -525,7 +550,7 @@ body {
     margin-bottom: 2rem; }
   .login__logo {
     width: 100%;
-    height: 20rem; }
+    height: 26rem; }
 
 .dock__view {
   margin-top: 1.4rem; }
@@ -660,3 +685,22 @@ body {
 .dock__loading {
   text-align: center;
   height: 30rem; }
+
+.menu {
+  overflow-y: auto;
+  width: 100%;
+  height: calc(100% - 5rem); }
+  .menu__item {
+    display: inline-block;
+    margin: 1rem;
+    text-align: center;
+    height: 9rem;
+    width: 9rem;
+    padding: 1rem; }
+    .menu__item-name {
+      display: block;
+      color: #006df0;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden; }

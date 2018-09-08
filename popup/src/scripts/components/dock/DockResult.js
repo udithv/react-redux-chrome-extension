@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { goTo } from 'route-lite';
 
-import Dock from '../dock/Dock';
+import Menu from '../menu/Menu';
 
 class DockResult extends Component {
 
@@ -27,9 +27,9 @@ class DockResult extends Component {
                 <div className="footer-nav">
                     <a 
                         className="btn__float btn__float--medium"
-                        onClick={() => goTo(Dock)}
+                        onClick={() => goTo(Menu)}
                     >
-                        <img src="img/sea-ship-with-containers.svg" alt="dockit" />
+                        <img src="img/menu.svg" alt="dockit" />
                     </a>
                 </div>
             </div>

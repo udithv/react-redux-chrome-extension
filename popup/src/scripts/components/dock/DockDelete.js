@@ -4,13 +4,13 @@ import { goBack, goTo } from 'route-lite';
 
 import { deleteDock } from '../../actions';
 
-import Dock from './Dock';
+import DockResult from './DockResult';
 
 class DockDelete extends Component {
 
     handleClick() {
         this.props.deleteDock(this.props.id);
-        goTo(Dock);
+        goTo(DockResult, { message: "Dock Deleted."});
     }
 
     renderMessage() {
@@ -18,7 +18,10 @@ class DockDelete extends Component {
             <div className="dock__message">
                 <span className="dock__message-main">Are you Sure ?</span>
                 <p className="dock__message-secondary">
-                    All webpages will be deleted
+                    All webpages will be deleted 
+                </p>
+                <p className="dock__message-secondary">
+                    Dock has {this.props.wpcount} pages.
                 </p>
             </div>
         );

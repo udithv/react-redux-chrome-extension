@@ -18,7 +18,7 @@ class Dock extends Component {
             <div className="footer">
                 <div className="footer-nav">
                     <a  
-                        onClick={() => goBack()/* goTo(WebPageForm, { webpage: this.props.selected_webpage }) */}
+                        onClick={() => goBack() }
                         className="btn__float btn__float--medium"
                     >
                         <img src="img/back-arrow.svg" alt="dockit" />

@@ -13,7 +13,7 @@ class DockResult extends Component {
                 </div>
                 <div className="u-margin-bottom-small">
                     <span className="dock__success-message">
-                            Docking Sucess!
+                            {this.props.message}
                     </span>
                 </div>
             </div>

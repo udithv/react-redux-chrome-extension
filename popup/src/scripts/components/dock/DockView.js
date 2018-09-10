@@ -21,6 +21,12 @@ class DockView extends Component {
         this.props.openTabs(this.props.webpages.map(wp => wp.url));
     }
 
+    handleDelete() {
+        const { id } = this.props;
+        let wpcount = this.props.webpages.length || null;
+        goTo(DockDelete, { id, wpcount })
+    }
+
     renderHeading() {
         return (
             <div className="dock__heading">
@@ -30,7 +36,6 @@ class DockView extends Component {
     }
 
     renderUtilityButton() {
-        const { projectName, id } = this.props;
 
         return (
             <div className="footer">
@@ -49,13 +54,13 @@ class DockView extends Component {
                     >
                         <img src="img/open_tab_multiple.svg" alt="dockit"/>
                     </a>
-                    <a 
+                    {(this.props.id !== this.props.current_dock._id) && (<a 
                         className="btn__float btn__float--medium"
                         title="Delete dock"
-                        onClick={() => goTo(DockDelete, { projectName, id })}
+                        onClick={this.handleDelete.bind(this)}
                     >
                         <img src="img/delete.svg" alt="dockit"/>
-                    </a>
+                    </a>)}
                 </div>
             </div>
         );
@@ -74,9 +79,10 @@ class DockView extends Component {
     }
 }
 
-function mapStateToProps({ webpages }) {
+function mapStateToProps({ webpages, current_dock }) {
     return {
-        webpages
+        webpages,
+        current_dock
     }
 }
 

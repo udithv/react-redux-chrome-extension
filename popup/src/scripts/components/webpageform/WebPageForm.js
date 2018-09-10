@@ -41,7 +41,7 @@ class WebPageForm extends Component {
             url,
             favIconUrl
         }, this.props.current_dock._id);
-        goTo(DockResult);
+        goTo(DockResult, { message: "Docking Success"});
     }
 
     handleWebPageQRCode() {

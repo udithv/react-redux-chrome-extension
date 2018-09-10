@@ -2,7 +2,8 @@ import { put, takeEvery, all, call } from 'redux-saga/effects'
 import { getTabInfo, openTabs } from './interface';
 import request from 'axios';
 
-const ROOT_URL = 'http://localhost:5000';
+//const ROOT_URL = 'http://localhost:5000';
+const ROOT_URL = 'https://errordock.herokuapp.com';
 
 /* 
     WORKER SAGAS

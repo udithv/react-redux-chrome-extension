@@ -5,7 +5,8 @@ import { logout } from '../../actions';
 
 class Header extends Component {
     handleLogout() {
-        window.open("http://localhost:5000/api/logout")
+        //window.open("http://localhost:5000/api/logout");
+        window.open("https://errordock.herokuapp.com/api/logout")
         this.props.logout();
     }
 

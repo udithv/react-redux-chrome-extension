@@ -11,6 +11,7 @@
     },
     "permissions": [
       "http://localhost:5000/api/current_user",
+      "https://errordock.herokuapp.com/api/current_user",
       "tabs"
     ],
     "browser_action": {
@@ -34,6 +35,11 @@
         "matches": ["http://localhost:5000/login_success"],
         "css": [],
         "js": ["content.js"]
+      },{
+        "matches": ["https://errordock.herokuapp.com/login_success"],
+        "css": [],
+        "js": ["content.js"]
       }
+
     ]
   }

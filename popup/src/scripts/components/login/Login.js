@@ -22,7 +22,7 @@ class Login extends Component {
             <div className="u-margin-bottom-small">
                 <a 
                   className="btn btn--animated btn--primary btn--blue-border"
-                  onClick={() =>  window.open("http://localhost:5000/auth/google")}
+                  onClick={() =>  window.open("https://errordock.herokuapp.com/auth/google")/* window.open("http://localhost:5000/auth/google") */}
                 > 
                         <img className="btn__icon" src="img/google-plus.svg" alt="sign-in-google" /> 
                         <span className="btn__content-text">
@@ -33,7 +33,7 @@ class Login extends Component {
             <div className="u-margin-bottom-small">
                 <a 
                   className="btn btn--animated btn--primary btn--blue-border"
-                  onClick={() =>  window.open("http://localhost:5000/auth/github")}
+                  onClick={() =>  window.open("https://errordock.herokuapp.com/auth/github")/* window.open("http://localhost:5000/auth/github") */}
                 > 
                     
                     <img className="btn__icon" src="img/github.svg" alt="sign-in-github" /> 

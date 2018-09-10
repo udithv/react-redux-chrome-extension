@@ -21,7 +21,7 @@ class DockDelete extends Component {
                     All webpages will be deleted 
                 </p>
                 <p className="dock__message-secondary">
-                    Dock has {this.props.wpcount} pages.
+                    Dock has {this.props.wpcount || '0'} pages.
                 </p>
             </div>
         );

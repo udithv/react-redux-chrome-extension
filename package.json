@@ -11,7 +11,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile:app": "./node_modules/.bin/gulp",
-    "start": "nodemon --exec './node_modules/.bin/gulp'"
+    "start": "nodemon --exec npm run compile:app"
   },
   "author": "Udith Victor",
   "license": "MIT",

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { fetchUser } from '../../actions';
 
 class App extends Component {
   constructor(props) {
@@ -8,22 +7,23 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser();
+    //this.props.fetchUser();
   }
 
   render() {
     return (
       <div>
-        Logged In
+        Hello World
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    auth: state.auth
-  };
-};
+// const mapStateToProps = (state) => {
+//   return {
+//     auth: state.auth
+//   };
+// };
 
-export default connect(mapStateToProps, { fetchUser })(App);
+// export default connect(mapStateToProps})(App);
+export default App;

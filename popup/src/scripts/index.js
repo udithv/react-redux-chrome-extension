@@ -7,7 +7,7 @@ import {Store} from 'react-chrome-redux';
 import {Provider} from 'react-redux';
 
 const proxyStore = new Store({
-  portName: 'errordock'
+  portName: 'new_app'
 });
 
 proxyStore.ready().then(() => {

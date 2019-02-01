@@ -47,20 +47,20 @@ gulp.task('popup-html', ['clean'], () => {
     .pipe(gulp.dest('./build'))
 });
 
-gulp.task('popup-css', ['clean'], () => {
-  return gulp.src('popup/src/style.css')
-          .pipe(gulp.dest('./build'))
-})
+// gulp.task('popup-css', ['clean'], () => {
+//   return gulp.src('popup/src/style.css')
+//           .pipe(gulp.dest('./build'))
+// })
 
-gulp.task('popup-img', ['clean'], () => {
-  return gulp.src('popup/src/img/*')
-          .pipe(gulp.dest('./build/img'))
-});
+// gulp.task('popup-img', ['clean'], () => {
+//   return gulp.src('popup/src/img/*')
+//           .pipe(gulp.dest('./build/img'))
+// });
 
-gulp.task('ext-icons', ['clean'], () => {
-  return gulp.src('popup/src/img/ext-icon/*')
-          .pipe(gulp.dest('./build/img/ext-icon'))
-});
+// gulp.task('ext-icons', ['clean'], () => {
+//   return gulp.src('popup/src/img/ext-icon/*')
+//           .pipe(gulp.dest('./build/img/ext-icon'))
+// });
 
 gulp.task('copy-manifest', ['clean'], () => {
   return gulp.src('manifest.json')
@@ -71,7 +71,7 @@ gulp.task('clean', (cb) => {
   rimraf('./build', cb);
 });
 
-gulp.task('build', ['copy-manifest', 'popup-js', 'popup-img', 'ext-icons', 'popup-html', 'popup-css', 'background-js', 'content-js']);
+gulp.task('build', ['copy-manifest', 'popup-js', 'popup-html', 'background-js', 'content-js']);
 
 gulp.task('watch', ['default'], () => {
   gulp.watch('popup/**/*', ['build']);

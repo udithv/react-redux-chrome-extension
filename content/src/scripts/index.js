@@ -5,13 +5,14 @@ import {Store} from 'react-chrome-redux';
 
 import App from './components/app/App';
 
-const proxyStore = new Store({portName: 'errordock'});
+const proxyStore = new Store({portName: 'new_app'});
 
 const anchor = document.createElement('div');
 anchor.id = 'rcr-anchor';
 
 document.body.insertBefore(anchor, document.body.childNodes[0]);
 
+console.log("NETWORK_MONITORING")
 proxyStore.ready().then(() => {
   render(
     <Provider store={proxyStore}>

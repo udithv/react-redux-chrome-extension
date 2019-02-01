@@ -1,1 +1,1 @@
-# project-captain-cook
+<div align="center">REACT REDUX CHROME EXTENSION BOILERPLATE</div>

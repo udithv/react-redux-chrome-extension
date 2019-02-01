@@ -21,11 +21,18 @@ sagaMiddleware.run(rootSaga)
 
 
 wrapStore(store, {
-  portName: 'errordock'
+  portName: 'new_app'
 });
 
+chrome.webRequest.onBeforeRequest.addListener(
+  function(details) {
+    console.log("NETWORK_LOGGEER : \n");
+    console.log('URL: '+details.url+' : ');
+    console.log(details);
+  },
+  {urls: ["<all_urls>"]},
+);
 
-//chrome.browserAction.setBadgeText({ text: '❤'});
 
 
 
